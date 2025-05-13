@@ -128,6 +128,30 @@ p a:hover {
 }
 
 /*--------------------------------------------------------------
+Philippines section (Desktop)
+--------------------------------------------------------------*/
+.philippines-section {
+  text-align: center; /* Center the content within the section */
+  padding: 2em; /* Adjust padding as needed */
+}
+
+
+.philippines-section img {
+  max-width: 50%; /* Make the image a maximum of 50% of its container's width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Ensure it behaves as a block-level element for centering */
+  margin: 1em auto; /* Center the image horizontally and add some vertical margin */
+  border-radius: 8px; /* Optional: Keep rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Keep shadow */
+}
+
+.philippines-section p {
+  text-align: left; /* Align the text to the left for readability */
+  /* Keep existing paragraph styles */
+}
+
+
+/*--------------------------------------------------------------
 Certificate Courses Styles (Desktop)
 --------------------------------------------------------------*/
 .filter-buttons {

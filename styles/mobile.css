@@ -167,6 +167,30 @@ p a:hover {
 }
 
 /*--------------------------------------------------------------
+Philippines section (Mobile)
+--------------------------------------------------------------*/
+.philippines-section {
+  text-align: center; /* Center content on mobile as well */
+  padding: 1.5em; /* Adjust padding as needed */
+}
+
+
+.philippines-section img {
+  max-width: 80%; /* Allow the image to be a bit wider on mobile */
+  height: auto;
+  display: block;
+  margin: 1em auto; /* Center the image */
+  border-radius: 8px; /* Optional */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Optional */
+}
+
+.philippines-section p {
+  text-align: left; /* Keep text left-aligned on mobile */
+  /* Keep existing paragraph styles */
+}
+
+
+/*--------------------------------------------------------------
 Certificate Courses Styles (Mobile)
 --------------------------------------------------------------*/
 .filter-buttons {
