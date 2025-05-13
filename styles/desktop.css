@@ -1,0 +1,233 @@
+/* styles/desktop.css */
+
+/*--------------------------------------------------------------
+General Styles
+--------------------------------------------------------------*/
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4; /* Softer background */
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/*--------------------------------------------------------------
+Header Styles
+--------------------------------------------------------------*/
+header {
+  background-color: #fff; /* White header */
+  padding: 1.5em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid #ddd; /* Subtle bottom border */
+}
+
+header img {
+  width: 70px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 1.5em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle image shadow */
+}
+
+header span {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #333;
+}
+
+/*--------------------------------------------------------------
+Navigation Styles
+--------------------------------------------------------------*/
+nav {
+  background-color: #333;
+  color: white;
+  padding: 0.5em 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 1em 1.5em;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+nav a:hover {
+  background-color: #555;
+  color: #eee; /* Lighter text on hover */
+}
+
+.hamburger-menu {
+  display: none; /* Hidden on desktop */
+}
+
+/*--------------------------------------------------------------
+Main Content Styles
+--------------------------------------------------------------*/
+main {
+  padding: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 2em;
+}
+
+main > h1 {
+  grid-column: 1 / 3; /* Span both columns */
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+section {
+  background-color: white;
+  padding: 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5em;
+}
+
+section h2 {
+  margin-top: 0;
+  margin-bottom: 1em;
+  color: #007bff;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5em;
+}
+
+p {
+  color: #555;
+  margin-bottom: 1.25em;
+  line-height: 1.7;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+p a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/*--------------------------------------------------------------
+Certificate Courses Styles (Desktop)
+--------------------------------------------------------------*/
+.filter-buttons {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1.5em;
+  justify-content: flex-start;
+}
+
+.filter-buttons button {
+  padding: 0.75em 1.5em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #eee;
+  color: #333;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: #ddd;
+  border-color: #bbb;
+}
+
+.filter-buttons button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.certificate-courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.course-card {
+  border: 1px solid #ddd;
+  padding: 1.25em;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+}
+
+.course-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75em;
+  color: #007bff;
+}
+
+.course-card p {
+  color: #555;
+  margin-bottom: 0.75em;
+  line-height: 1.6;
+}
+
+.course-card.completed {
+  background-color: #e6ffe6;
+  border-color: #b3ffb3;
+  color: #008000;
+}
+
+.course-card.not-completed {
+  background-color: #ffe6e6;
+  border-color: #ffb3b3;
+  color: #cc0000;
+}
+
+#totalCredits {
+  font-weight: bold;
+  color: #444;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+/*--------------------------------------------------------------
+Footer Styles
+--------------------------------------------------------------*/
+footer {
+  background-color: #333;
+  color: #eee;
+  text-align: center;
+  padding: 2em;
+  font-size: 0.9em;
+  border-top: 1px solid #555;
+}
+
+footer p {
+  margin: 0.5em 0;
+  color: #ffffff;
+}
+
+#lastModified {
+  font-style: italic;
+  color: #ffffff;
+}

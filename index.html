@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <meta name="description" content="A brief description of this webpage.">
+    <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 769px)">
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 768px)">
+    <script src="scripts/scripts.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="images/mee.jpg" alt="Your Profile Photo" width="50" height="50">
+        <span>David Molina</span>
+    </header>
+
+    <nav>
+        <button class="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chamber.html">Chamber</a></li>
+            <li><a href="final.html">Final</a></li>
+            <li><a href="https://github.com/davidpmolina/wdd231">GitHub Profile</a></li>
+            <li><a href="https://www.linkedin.com/in/david-molina-04b31229b/">LinkedIn</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Home</h1>
+
+        <section>
+            <h2>Section Title 1</h2>
+            <p>This is the content for the first section. You can add your information and details here. Remember to keep your content engaging and relevant to your audience.</p>
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_elements">MDN Reference for Headings</a></p>
+        </section>
+
+        <section>
+            <h2>Section Title 3</h2>
+            <p>This is the final section of the main content. Add your concluding remarks or any other important information you want to highlight on this page.</p>
+        </section>
+
+        <section>
+            <h2>Certificate Courses</h2>
+            <div class="filter-buttons">
+                <button id="allCourses">All Courses</button>
+                <button id="wddCourses">WDD Courses</button>
+                <button id="cseCourses">CSE Courses</button>
+            </div>
+            <div class="certificate-courses">
+                </div>
+            <p id="totalCredits"></p>
+        </section>
+
+        
+    </main>
+s
+    <footer>
+        <p>&copy; <span id="currentyear"></span> David Molina | Santa Rita, Central Luzon, Philippines</p>
+        <p id="lastModified"></p>
+    </footer>
+
+</body>
+</html>
