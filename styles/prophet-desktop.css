@@ -1,0 +1,109 @@
+/* styles/prophet-desktop.css */
+
+/* General Styles (similar to your main desktop.css if not already applied site-wide) */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4; /* Softer background */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh; /* Ensure body takes full height */
+    display: flex;
+    flex-direction: column; /* For sticky footer */
+}
+
+/* Header Styles (similar to your main desktop.css) */
+header {
+    background-color: #fff;
+    padding: 1.5em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the h1 */
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #007bff; /* Primary color for main heading */
+    margin: 0; /* Remove default margin */
+}
+
+/* Main Content Area */
+main {
+    flex: 1; /* Allows main to grow and push footer down */
+    padding: 2em;
+    max-width: 1200px; /* Max width for content */
+    margin: 2em auto; /* Center main content with vertical margin */
+}
+
+/* #cards Container - The core of the grid layout */
+#cards {
+    display: grid;
+    /* Use auto-fit for responsive columns */
+    /* minmax(300px, 1fr): Cards will be at least 300px wide,
+       and grow to fill available space equally. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em; /* Space between cards */
+    justify-content: center; /* Center items if they don't fill the full width */
+}
+
+/* Individual Prophet Card Styling */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* More prominent shadow for cards */
+    padding: 1.5em;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    display: flex; /* Use flexbox to stack content inside the card */
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: space-between; /* Distribute space if contents have different heights */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.card h2 {
+    font-size: 1.5em;
+    color: #0056b3; /* Darker blue for prophet names */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+.card p {
+    font-size: 0.95em;
+    color: #555;
+    margin: 0.25em 0;
+    line-height: 1.4;
+}
+
+.card img {
+    width: 100%; /* Image takes full width of its card */
+    max-width: 250px; /* Limit max width for larger screens if cards are very wide */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Slightly rounded corners for images */
+    margin-top: 1em; /* Space above image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styles (similar to your main desktop.css) */
+footer {
+    background-color: #333;
+    color: #eee;
+    text-align: center;
+    padding: 2em;
+    font-size: 0.9em;
+    border-top: 1px solid #555;
+    margin-top: 2em; /* Space above footer */
+}
+
+footer p {
+    margin: 0.5em 0;
+    color: #ffffff;
+}

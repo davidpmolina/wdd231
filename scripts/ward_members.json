@@ -1,0 +1,33 @@
+{
+  "family_name": "Molina",
+  "move_in_date": "2023-01-15",
+  "number_of_people": 5,
+  "visited_by_bishopric": true,
+  "family_members": [
+    {
+      "name": "David Molina",
+      "gender": "Male",
+      "birthdate": "2000-09-28"
+    },
+    {
+      "name": "Dolly Molina",
+      "gender": "Female",
+      "birthdate": "1975-03-10"
+    },
+    {
+      "name": "Daniel Molina",
+      "gender": "Male",
+      "birthdate": "1972-11-25"
+    },
+    {
+      "name": "Rosselle Molina",
+      "gender": "Female",
+      "birthdate": "2005-07-01"
+    },
+    {
+      "name": "Regie Molina",
+      "gender": "Male",
+      "birthdate": "2015-02-14"
+    }
+  ]
+}
