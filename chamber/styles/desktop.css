@@ -1,0 +1,712 @@
+/*
+    Timbuktu Chamber of Commerce - Desktop Styles
+    Designed for screen widths greater than 768px.
+*/
+
+/* ========================================= */
+/* 1. Root & Base Styles       */
+/* ========================================= */
+
+:root {
+    /* Define a color palette for better maintainability */
+    --primary-color: #007bff; /* Example: Blue for links/buttons */
+    --primary-dark-color: #0056b3;
+    --secondary-color: #6c757d; /* Example: Grey for secondary buttons */
+    --secondary-dark-color: #5a6268;
+    --text-color: #333;
+    --light-text-color: #666;
+    --dark-bg-color: #444;
+    --light-bg-color: #f4f4f4;
+    --white-bg-color: #fff;
+    --light-grey-bg: #eee;
+    --border-color: #ddd;
+    --dashed-border-color: #999;
+    --highlight-border-silver: silver;
+    --highlight-border-gold: gold;
+
+    /* Define font sizes (optional, but good for scaling) */
+    --font-size-base: 16px;
+    --font-size-sm: 0.9em;
+    --font-size-md: 1.1em;
+    --font-size-lg: 1.2em;
+    --font-size-xl: 1.5em;
+    --font-size-xxl: 1.8em;
+    --font-size-xxxl: 2.5em;
+
+    /* Spacing variables (optional) */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --spacing-xxl: 40px;
+    --spacing-xxxl: 60px;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Replaced placeholder with a specific default */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg-color);
+    font-size: var(--font-size-base); /* Using variable */
+}
+
+/* Optional: Smooth scrolling for one-page navigation */
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 960px; /* Standard content width for desktop */
+    margin: 0 auto; /* Center the container */
+    padding: var(--spacing-lg); /* Using variable */
+}
+
+/* --- Utility Classes --- */
+.text-center {
+    text-align: center;
+}
+
+/* ========================================= */
+/* 2. Header         */
+/* ========================================= */
+
+#site-header {
+    background-color: var(--white-bg-color);
+    padding: var(--spacing-sm) var(--spacing-lg); /* Using variables */
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center; /* Center the header content */
+    align-items: center; /* Vertically align items */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Space out logo and nav */
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row; /* Stack image and text vertically */
+    align-items: flex-start; /* Align logo content to the left */
+    /* text-decoration: none; Remove underline from logo link if it's a link */
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column; /* Stack h1 and p vertically */
+    align-items: flex-start; /* Align text to the left within its own column */
+    justify-content: center; /* Vertically center the text block if needed */
+}
+
+.logo h1 {
+    font-size: var(--font-size-xxl); /* Using variable */
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1;
+}
+
+.logo p {
+    font-size: var(--font-size-sm); /* Using variable */
+    margin: 0;
+    color: var(--light-text-color);
+    line-height: 1;
+}
+
+/* Hide mobile menu elements on desktop */
+.menu-toggle,
+.hamburger-menu {
+    display: none;
+}
+
+/* Main Navigation */
+#main-nav {
+    display: block; /* Ensure desktop nav is always visible on desktop */
+}
+
+#main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--spacing-lg); /* Using variable */
+    align-items: center; /* Align nav items vertically */
+}
+
+#main-nav ul li a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-weight: bold;
+    padding: var(--spacing-xs) 0; /* Using variable */
+    transition: color 0.3s ease;
+}
+
+#main-nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+.search-icon {
+    font-size: var(--font-size-lg); /* Using variable */
+    color: var(--light-text-color);
+    cursor: pointer;
+}
+
+/* ========================================= */
+/* 3. Buttons          */
+/* ========================================= */
+
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg); /* Using variables */
+    border-radius: var(--spacing-xs); /* Using variable */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap; /* Prevent text wrapping inside button */
+}
+
+.btn.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--white-bg-color);
+    border: none;
+}
+
+.btn.primary-btn:hover {
+    background-color: var(--primary-dark-color);
+}
+
+.btn.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--white-bg-color);
+    border: none;
+    margin-left: var(--spacing-sm); /* Using variable */
+}
+
+.btn.secondary-btn:hover {
+    background-color: var(--secondary-dark-color);
+}
+
+.btn.btn-small {
+    padding: var(--spacing-xs) var(--spacing-sm); /* Using variables */
+    font-size: var(--font-size-sm); /* Using variable */
+}
+
+/* ========================================= */
+/* 4. Home Section         */
+/* ========================================= */
+
+.hero-section {
+    background: linear-gradient(to right,
+                rgba(220, 220, 220, 0.9) 0%,     /* Slightly darker light grey, starting at 0% */
+                rgba(255, 255, 255, 0.9) 50%,   /* White in the middle, slightly less transparent */
+                rgba(255, 200, 200, 0.9) 100%   /* A more noticeable but still light red, ending at 100% */
+              );
+    padding: var(--spacing-xxl) 0; /* Using variable */
+    text-align: center;
+    position: relative;
+}
+
+.hero-image-placeholder {
+    background-color: var(--border-color); /* Adjusted to match light grey */
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-lg); /* Using variable */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image-placeholder img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-section .btn.keynote-btn {
+    position: absolute;
+    bottom: var(--spacing-xxxl); /* Adjusted to variable */
+    right: var(--spacing-xxl); /* Adjusted to variable */
+    background-color: var(--dark-bg-color); /* Darker button color */
+    color: var(--white-bg-color);
+    padding: var(--spacing-sm) var(--spacing-lg); /* Using variables */
+    text-decoration: none;
+    border-radius: var(--spacing-xs); /* Using variable */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.hero-section .btn.keynote-btn:hover {
+    background-color: var(--secondary-dark-color); /* Example hover */
+}
+
+/* --- Main Home Content Section --- */
+.home-main-content {
+    background-color: var(--white-bg-color);
+    padding: var(--spacing-lg) 0; /* Using variable */
+}
+
+.home-main-content h2 {
+    font-size: var(--font-size-xxxl); /* Using variable */
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: var(--spacing-sm); /* Using variable */
+    margin-bottom: var(--spacing-lg); /* Using variable */
+    text-align: left;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-lg); /* Using variable */
+    margin-bottom: var(--spacing-xxl); /* Using variable */
+}
+
+.events-section,
+.weather-section,
+.weather-forecast-section {
+    background-color: var(--light-grey-bg); /* This is the light grey background for the *content* area */
+    padding: var(--spacing-lg); /* Using variable - this padding will now only apply to the *content below* the h3 */
+    border-radius: var(--spacing-xs); /* Using variable */
+    overflow: hidden; /* Crucial for ensuring the h3's negative margins don't break the parent's border-radius */
+}
+
+.events-section h3,
+.weather-section h3,
+.weather-forecast-section h3 {
+    background-color: var(--dark-bg-color); /* Dark background for the heading */
+    color: var(--white-bg-color); /* White text for the heading */
+    padding: var(--spacing-md) var(--spacing-lg); /* Padding inside the dark heading bar */
+    /*
+     * Negative margins to pull the h3 into the parent's padding area,
+     * making it span the full width of the parent and align with its top/side borders.
+     * The bottom margin pushes the content below it down, creating separation.
+     */
+    margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-lg) calc(-1 * var(--spacing-lg));
+    font-size: var(--font-size-xl); /* Using variable */
+    text-align: left; /* Align text to left as per image */
+}
+
+/* Weather Specific Styles */
+.weather-current {
+    /* No padding-top needed here, as the h3's bottom margin handles the spacing */
+    text-align: center;
+}
+
+.weather-current img {
+    width: 60px;
+    height: auto;
+    margin-bottom: var(--spacing-sm); /* Using variable */
+}
+
+.weather-current .temp {
+    font-size: 2.5em; /* Specific size for temperature */
+    font-weight: bold;
+    margin: 0;
+}
+
+.weather-current p {
+    margin: var(--spacing-xs) 0; /* Using variable */
+    font-size: var(--font-size-sm); /* Using variable */
+}
+
+.weather-forecast {
+    /* No padding-top needed here, as the h3's bottom margin handles the spacing */
+    text-align: left; /* Forecast text seems left-aligned in the image */
+}
+
+.weather-forecast p {
+    font-weight: bold;
+    margin: var(--spacing-sm) 0; /* Using variable */
+}
+
+/* Business Preview Grid */
+.business-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xxl); /* Using variable */
+}
+
+.business-card-preview {
+    background-color: var(--light-grey-bg); /* This is the light grey background for the *entire card* */
+    border-radius: var(--spacing-xs); /* Using variable */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden; /* Keeps the rounded corners */
+    text-align: left; /* Align all text to the left now */
+    display: flex; /* Use flexbox to stack header, divider, and content */
+    flex-direction: column;
+}
+
+.business-card-preview .card-header {
+    background-color: var(--dark-bg-color);
+    color: var(--white-bg-color);
+    padding: var(--spacing-md) var(--spacing-lg); /* Padding inside the dark bar */
+    text-align: center; /* Center the business name and tagline */
+    border-top-left-radius: var(--spacing-xs);
+    border-top-right-radius: var(--spacing-xs);
+    /* No negative margins needed here due to the new HTML structure for the header */
+}
+
+.business-card-preview .card-header h3 {
+    font-size: var(--font-size-xl);
+    margin: 0; /* Remove default margin */
+    line-height: 1.2;
+}
+
+.business-card-preview .card-header .tag-line {
+    font-size: var(--font-size-sm);
+    margin: var(--spacing-xs) 0 0 0; /* Small top margin for tagline, no bottom margin as divider follows */
+    line-height: 1.2;
+    color: var(--white-bg-color); /* Ensure tagline is white */
+}
+
+.business-card-preview .divider {
+    height: 1px;
+    background-color: var(--border-color); /* Or a slightly darker grey to match image */
+    margin: var(--spacing-md) var(--spacing-lg); /* Space above/below the line, and horizontal padding */
+    /* This margin now applies to the space within the card's overall padding,
+       so it correctly aligns. */
+}
+
+.business-card-preview .card-content {
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Padding around content: right, bottom, left. No top padding here as divider provides space. */
+    display: flex; /* Use flexbox for image and contact info side-by-side */
+    align-items: flex-start; /* Align image and text at the top */
+    gap: var(--spacing-md); /* Space between image and text */
+    flex-grow: 1; /* Allow content to grow if card has fixed height */
+}
+
+.business-image-placeholder {
+    width: 75px;   /* Change this to your desired width */
+    height: 75px;  /* Change this to your desired height */
+
+    /* Keep these properties to ensure the image fills the space cleanly */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    flex-shrink: 0;
+    border-radius: var(--border-radius); /* Your existing border-radius */
+    background-color: var(--light-grey-bg); /* Your existing background */
+}
+
+/* The img inside ensures it scales properly within the placeholder */
+.business-image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Or 'cover' depending on desired cropping/fitting */
+}
+
+.business-card-preview .contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.business-card-preview .contact-info p {
+    font-size: var(--font-size-sm);
+    margin: var(--spacing-xxs) 0; /* Adjust vertical spacing for contact lines */
+    color: var(--light-text-color);
+    line-height: 1.4;
+    /* Ensure text alignment is left for contact info */
+    text-align: left; 
+    word-break: break-all;
+}
+
+
+
+/* ========================================= */
+/* 5. General Content Sections      */
+/* ========================================= */
+
+.content-section {
+    padding: var(--spacing-xxxl) 0; /* Using variable */
+    background-color: var(--white-bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.content-section:last-of-type {
+    border-bottom: none;
+}
+
+.content-section:nth-of-type(even) {
+    background-color: #f9f9f9; /* Slightly different background for alternating sections */
+}
+
+.content-section h2 {
+    text-align: center;
+    font-size: var(--font-size-xxxl); /* Using variable */
+    margin-bottom: var(--spacing-xxl); /* Using variable */
+    color: var(--text-color);
+}
+
+/* Membership Benefits */
+.membership-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg); /* Using variable */
+    margin-top: var(--spacing-xl); /* Using variable */
+}
+
+.benefit-item {
+    background-color: var(--light-grey-bg);
+    padding: var(--spacing-lg); /* Using variable */
+    border-radius: var(--spacing-xs); /* Using variable */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.benefit-item h3 {
+    font-size: var(--font-size-lg); /* Using variable */
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* ========================================= */
+/* 6. Member Directory        */
+/* ========================================= */
+
+.directory-intro {
+    text-align: center;
+    margin-bottom: 25px; /* Specific value */
+    font-size: var(--font-size-md); /* Using variable */
+    color: var(--light-text-color);
+}
+
+.menu-toggle-buttons {
+    text-align: center;
+    margin-bottom: var(--spacing-lg); /* Using variable */
+}
+
+.menu-toggle-buttons button {
+    background-color: var(--light-grey-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px; /* Specific values */
+    margin: 0 var(--spacing-xs); /* Using variable */
+    cursor: pointer;
+    border-radius: var(--spacing-xs); /* Using variable */
+    font-weight: bold;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.menu-toggle-buttons button:hover {
+    background-color: var(--border-color);
+}
+
+.menu-toggle-buttons button.active {
+    background-color: var(--primary-color);
+    color: var(--white-bg-color);
+    border-color: var(--primary-color);
+}
+
+/* Grid View Styles */
+#members-display.grid-view-active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg); /* Using variable */
+    padding: var(--spacing-sm); /* Using variable */
+    background-color: #f9f9f9;
+    border-radius: 8px; /* Specific value */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+#members-display.grid-view-active .member-card {
+    background-color: var(--white-bg-color);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-lg); /* Using variable */
+    border-radius: 8px; /* Specific value */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+#members-display.grid-view-active .member-card:hover {
+    transform: translateY(-5px);
+}
+
+#members-display.grid-view-active .member-card img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: var(--spacing-md); /* Using variable */
+    border: 3px solid var(--light-grey-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#members-display.grid-view-active .member-card h3 {
+    font-size: var(--font-size-xl); /* Using variable */
+    margin-bottom: var(--spacing-xs); /* Using variable */
+    color: var(--primary-color);
+}
+
+#members-display.grid-view-active .member-card p {
+    font-size: 0.95em; /* Specific value */
+    margin-bottom: var(--spacing-xs); /* Using variable */
+    color: var(--light-text-color);
+}
+
+#members-display.grid-view-active .member-card p strong {
+    color: var(--text-color);
+}
+
+#members-display.grid-view-active .member-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+#members-display.grid-view-active .member-card a:hover {
+    text-decoration: underline;
+}
+
+/* List View Styles */
+#members-display.list-view-active {
+    display: flex;
+    flex-direction: column;
+    gap: 1px; /* Specific value */
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Specific value */
+    overflow: hidden;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+#members-display.list-view-active .member-card {
+    background-color: var(--white-bg-color);
+    padding: var(--spacing-md) var(--spacing-lg); /* Using variables */
+    display: grid;
+    grid-template-columns: 80px 2fr 1.2fr 1.2fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--light-grey-bg);
+    box-shadow: none;
+    border-radius: 0;
+    transition: background-color 0.2s ease;
+}
+
+#members-display.list-view-active .member-card:hover {
+    background-color: #f0f0f0;
+}
+
+#members-display.list-view-active .member-card:last-child {
+    border-bottom: none;
+}
+
+#members-display.list-view-active .member-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0;
+    border: 1px solid var(--light-grey-bg);
+}
+
+#members-display.list-view-active .member-card h3 {
+    font-size: var(--font-size-lg); /* Using variable */
+    margin: 0;
+    text-align: left;
+}
+
+#members-display.list-view-active .member-card p {
+    font-size: var(--font-size-sm); /* Using variable */
+    margin: 0;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#members-display.list-view-active .member-card a {
+    font-size: var(--font-size-sm); /* Using variable */
+    text-align: left;
+}
+
+/* Membership Level Specific Styling */
+.silver-member.grid-view-active {
+    border: 2px solid var(--highlight-border-silver);
+    box-shadow: 0 0 10px rgba(192,192,192,0.5);
+}
+.gold-member.grid-view-active {
+    border: 2px solid var(--highlight-border-gold);
+    box-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+/* For list view, just adjust border/background if desired, not shadow */
+.silver-member.list-view-active {
+    border-left: 5px solid var(--highlight-border-silver);
+}
+.gold-member.list-view-active {
+    border-left: 5px solid var(--highlight-border-gold);
+}
+
+
+/* ========================================= */
+/* 7. Footer         */
+/* ========================================= */
+
+#site-footer {
+    background-color: var(--dark-bg-color);
+    color: var(--white-bg-color);
+    padding: var(--spacing-xxl) 0; /* Using variable */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-xl); /* Using variable */
+    padding-bottom: var(--spacing-lg); /* Using variable */
+    border-bottom: 1px solid #666; /* Specific color */
+}
+
+.footer-contact h3,
+.footer-social h3,
+.footer-meta h3 {
+    font-size: var(--font-size-lg); /* Using variable */
+    margin-bottom: var(--spacing-md); /* Using variable */
+    color: var(--white-bg-color);
+}
+
+.footer-contact p {
+    margin: var(--spacing-xs) 0; /* Using variable */
+    font-size: var(--font-size-sm); /* Using variable */
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--spacing-md); /* Using variable */
+    align-items: flex-start;
+    margin-top: var(--spacing-md); /* Using variable */
+}
+
+.footer-social img {
+    width: var(--spacing-xl); /* Using variable */
+    height: var(--spacing-xl); /* Using variable */
+    filter: brightness(0) invert(1);
+}
+
+.footer-meta p {
+    font-size: 0.8em; /* Specific value */
+    margin: var(--spacing-xs) 0; /* Using variable */
+}
+
+.copyright {
+    text-align: center;
+    padding-top: var(--spacing-lg); /* Using variable */
+    font-size: 0.8em; /* Specific value */
+    color: #bbb; /* Specific color */
+}

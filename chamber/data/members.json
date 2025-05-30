@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Timbuktu Grand Hotel",
+    "address": "15 Desert Oasis Blvd, Timbuktu",
+    "phone": "223-555-1001",
+    "website": "http://www.timbuktugrandhotel.com",
+    "image": "hotel-grand.jpg",  
+    "membershipLevel": 3,
+    "slogan": "Your Luxurious Stay in the Heart of the Sahara."
+  },
+  {
+    "name": "Sahara Spice Market",
+    "address": "7 Bazaar Alley, Timbuktu",
+    "phone": "223-555-1002",
+    "website": "http://www.saharaspicemarket.com",
+    "image": "spice-market.jpg",
+    "membershipLevel": 2,
+    "slogan": "Exotic Flavors from Across the Desert."
+  },
+  {
+    "name": "Ancient Scrolls Books",
+    "address": "3 Manuscript Lane, Timbuktu",
+    "phone": "223-555-1003",
+    "website": "http://www.ancientscrollsbooks.com",
+    "image": "ancient-scrolls.jpg",
+    "membershipLevel": 1,
+    "slogan": "Preserving the Wisdom of Ages."
+  },
+  {
+    "name": "Desert Crafts Collective",
+    "address": "12 Artisan Way, Timbuktu",
+    "phone": "223-555-1004",
+    "website": "http://www.desertcrafts.org",
+    "image": "crafts-collective.jpg",
+    "membershipLevel": 2,
+    "slogan": "Handmade Treasures, Timeless Traditions."
+  },
+  {
+    "name": "Camel Caravans Tours",
+    "address": "Foot of the Dunes Rd, Timbuktu",
+    "phone": "223-555-1005",
+    "website": "http://www.camelcaravans.com",
+    "image": "camel-tours.jpg",
+    "membershipLevel": 3,
+    "slogan": "Experience the Sahara, Your Way."
+  },
+  {
+    "name": "Oasis Coffee House",
+    "address": "9 Date Palm Sq, Timbuktu",
+    "phone": "223-555-1006",
+    "website": "http://www.oasiscoffee.com",
+    "image": "oasis-coffee.jpg",
+    "membershipLevel": 1,
+    "slogan": "Where Community Gathers Over Coffee."
+  },
+  {
+    "name": "Timbuktu Textiles",
+    "address": "2 Silk Road St, Timbuktu",
+    "phone": "223-555-1007",
+    "website": "http://www.timbuktutextiles.com",
+    "image": "textiles.jpg",
+    "membershipLevel": 2,
+    "slogan": "Threads of Culture, Woven with Care."
+  },
+  {
+    "name": "Desert Blooms Florist",
+    "address": "5 Flower Lane, Timbuktu",
+    "phone": "223-555-1008",
+    "website": "http://www.desertblooms.com",
+    "image": "desert-blooms.jpg",
+    "membershipLevel": 1,
+    "slogan": "Bringing Beauty to the Desert."
+  }
+]

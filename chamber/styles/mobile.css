@@ -1,0 +1,447 @@
+/*
+    Timbuktu Chamber of Commerce - Mobile Styles
+    Applies for screen widths up to 768px.
+*/
+
+/* ========================================= */
+/* 1. Root & Base Styles         */
+/* (Inherits from Desktop where not overridden) */
+/* ========================================= */
+
+body {
+    font-size: var(--font-size-base); /* Ensure base font size is readable on mobile, consistent with desktop variable */
+}
+
+.container {
+    padding: var(--spacing-md); /* Reduce padding on smaller screens */
+}
+
+/* ========================================= */
+/* 2. Header                 */
+/* ========================================= */
+
+#site-header {
+    flex-wrap: wrap; /* Allow items to wrap if space is tight */
+    padding: var(--spacing-sm) var(--spacing-md); /* Using variables */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Lighter shadow on mobile */
+}
+
+.header-content {
+    justify-content: space-between; /* Logo on left, hamburger on right */
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row; /* Make children (img and .logo-text) sit side-by-side */
+    align-items: center; /* Vertically align items in the middle */
+    gap: var(--spacing-xs); /* Smaller gap for mobile */
+}
+
+.logo img {
+    width: 40px; /* Smaller logo on mobile */
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column; /* Stack h1 and p vertically */
+    align-items: flex-start; /* Align text to the left */
+    justify-content: center;
+}
+
+.logo h1 {
+    font-size: var(--font-size-xxl); /* Smaller title text */
+    margin: 0;
+}
+
+.logo p {
+    font-size: 0.7em; /* Smaller subtitle text */
+    margin: 0;
+}
+
+/* --- Mobile Menu Toggle (Hamburger Icon) --- */
+.menu-toggle {
+    display: none; /* Hide the checkbox itself */
+}
+
+.hamburger-menu {
+    display: flex; /* Make the label visible */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 100;
+    padding: var(--spacing-xs); /* Add padding for easier tapping */
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Menu Animation (to X) */
+#menu-toggle:checked + .hamburger-menu .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+#menu-toggle:checked + .hamburger-menu .bar:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked + .hamburger-menu .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Mobile Navigation Visibility and Styling --- */
+#main-nav {
+    width: 100%; /* Take full width when revealed */
+    order: 2; /* Position it below the header on smaller screens */
+    position: absolute; /* Position relative to the header */
+    top: 100%; /* Place it right below the header */
+    left: 0;
+    background-color: var(--white-bg-color);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+
+    max-height: 0; /* Start with height 0 */
+    opacity: 0; /* Start fully transparent */
+    overflow: hidden; /* Hide content that goes beyond max-height */
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Add transition for animation */
+}
+
+#menu-toggle:checked ~ #main-nav {
+    max-height: 300px; /* Adjust this value to be greater than the maximum possible height of your menu content */
+    opacity: 1; /* Fade in to fully opaque */
+}
+
+#main-nav ul {
+    flex-direction: column; /* Stack nav items vertically */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main-nav ul li {
+    width: 100%;
+    text-align: center;
+}
+
+#main-nav ul li a {
+    padding: var(--spacing-md) 0; /* Larger clickable area */
+    display: block;
+    border-bottom: 1px solid var(--light-grey-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: normal;
+    transition: background-color 0.2s ease;
+}
+
+#main-nav ul li a:hover {
+    background-color: #f0f0f0;
+}
+
+#main-nav ul li:last-child a {
+    border-bottom: none;
+}
+
+.search-icon {
+    display: none; /* Hide search icon on mobile */
+}
+
+/* ========================================= */
+/* 3. Home Section            */
+/* ========================================= */
+
+.hero-section {
+    padding: var(--spacing-lg) 0; /* Less padding */
+}
+
+.hero-image-placeholder {
+    height: 180px; /* Smaller height for hero image on mobile */
+    margin-bottom: var(--spacing-sm); /* Using variable */
+}
+
+.hero-section .btn.keynote-btn {
+    position: static; /* Remove absolute positioning */
+    margin: var(--spacing-sm) auto 0 auto; /* Center button horizontally */
+    display: block;
+    width: fit-content;
+}
+
+/* --- Main Home Content Section --- */
+.home-main-content h2 {
+    font-size: var(--font-size-xxl); /* Slightly smaller title */
+    text-align: center;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: var(--spacing-md); /* Using variable */
+}
+
+.home-grid {
+    grid-template-columns: 1fr; /* Single column layout for grid on mobile */
+    gap: var(--spacing-md); /* Smaller gap */
+}
+
+.events-section,
+.weather-section,
+.weather-forecast-section {
+    padding: var(--spacing-md); /* Smaller padding */
+}
+
+.events-section h3,
+.weather-section h3,
+.weather-forecast-section h3 {
+    font-size: var(--font-size-xl);
+}
+
+.weather-current .temp {
+    font-size: 2em; /* Slightly smaller temperature */
+}
+
+.weather-current img {
+    width: 50px; /* Slightly smaller weather icon */
+}
+
+.business-preview-grid {
+    grid-template-columns: 1fr; /* Single column for business cards on mobile */
+    gap: var(--spacing-md); /* Smaller gap */
+    margin-top: var(--spacing-xl); /* Using variable */
+}
+
+.business-card-preview {
+    padding: var(--spacing-md);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Lighter shadow */
+}
+
+.business-image-placeholder {
+    width: 80px; /* Smaller image placeholder */
+    height: 80px;
+}
+
+/* ========================================= */
+/* 4. General Content Sections      */
+/* ========================================= */
+
+.content-section {
+    padding: var(--spacing-xxl) 0; /* Less vertical padding */
+}
+
+.content-section h2 {
+    font-size: var(--font-size-xxxl); /* Smaller section titles */
+    margin-bottom: var(--spacing-xl); /* Using variable */
+}
+
+.membership-benefits {
+    grid-template-columns: 1fr; /* Stack benefits vertically */
+}
+
+.benefit-item {
+    padding: var(--spacing-md);
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.benefit-item h3 {
+    font-size: var(--font-size-lg);
+}
+
+/* ========================================= */
+/* 5. Member Directory          */
+/* ========================================= */
+
+.directory-intro {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-lg); /* Using variable */
+}
+
+.menu-toggle-buttons {
+    margin-bottom: var(--spacing-md); /* Using variable */
+}
+
+.menu-toggle-buttons button {
+    padding: 6px 12px; /* Specific values */
+    font-size: var(--font-size-sm);
+}
+
+/* Mobile: Grid View (Default - stacked) */
+#members-display.grid-view-active {
+    grid-template-columns: 1fr; /* Single column for grid on mobile */
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs); /* Reduce padding */
+    box-shadow: none;
+    background-color: transparent;
+}
+
+#members-display.grid-view-active .member-card {
+    padding: var(--spacing-md);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Lighter shadow */
+}
+
+#members-display.grid-view-active .member-card img {
+    max-width: 80px; /* Smaller image */
+    margin-bottom: var(--spacing-sm); /* Using variable */
+}
+
+#members-display.grid-view-active .member-card h3 {
+    font-size: var(--font-size-xl);
+}
+
+#members-display.grid-view-active .member-card p {
+    font-size: var(--font-size-sm);
+}
+
+/* Mobile: List View */
+#members-display.list-view-active {
+    display: flex;
+    flex-direction: column; /* Explicitly stack the individual .member-card items vertically */
+    gap: 0; /* No gap between list items, they will be separated by borders */
+    padding: 0; /* No extra padding for the container itself */
+}
+
+#members-display.list-view-active .member-card {
+    background-color: var(--white-bg-color);
+    /* CRITICAL CHANGE: Use a two-column grid for EACH list item */
+    display: grid;
+    grid-template-columns: 80px 1fr; /* Image (80px wide) | Text content (fills remaining space) */
+    gap: var(--spacing-md); /* Gap between the image and the text content */
+    align-items: center; /* Vertically align content in the row */
+    
+    padding: var(--spacing-sm) var(--spacing-md); /* Adjust padding for list item */
+    border-bottom: 1px solid var(--light-grey-bg); /* Use border for vertical separation */
+    box-shadow: none; /* No shadow for list items */
+    border-radius: 0; /* No border-radius for list items (makes them look like rows) */
+    transition: background-color 0.2s ease;
+    text-align: left; /* Default text alignment for list items */
+}
+
+#members-display.list-view-active .member-card:first-child {
+    border-top: 1px solid var(--light-grey-bg);
+}
+
+#members-display.list-view-active .member-card img {
+    width: 60px; /* Smaller image in list view */
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%; /* Still round */
+    /* Position the image within its grid column */
+    grid-column: 1 / 2; 
+    grid-row: 1 / span 3; /* Span multiple rows to align with text */
+    margin-right: 0; /* Reset margins */
+    margin-bottom: 0; /* Reset margins */
+}
+
+#members-display.list-view-active .member-card .member-header-info {
+    grid-column: 2 / 3; /* Place in the second grid column */
+    grid-row: 1 / 2; /* First row within the right column */
+    text-align: left; /* Align text left */
+    margin-bottom: 0; /* Adjust spacing */
+}
+
+#members-display.list-view-active .member-card h3 {
+    font-size: var(--font-size-md); /* Smaller name font for list */
+    margin: 0; /* Remove default margins */
+}
+
+#members-display.list-view-active .member-card .member-slogan {
+    font-size: var(--font-size-xs); /* Smaller slogan font for list */
+    font-style: italic;
+    color: var(--text-color-light);
+    margin: 0; /* Remove default margins */
+}
+
+#members-display.list-view-active .member-card .member-contact-details {
+    grid-column: 2 / 3; /* Place in the second grid column */
+    grid-row: 2 / 4; /* Spans from row 2 to 4 within the right column */
+    text-align: left; /* Align text left */
+    margin-top: var(--spacing-xs); /* Space below header info */
+}
+
+#members-display.list-view-active .member-card .member-contact-details p {
+    font-size: var(--font-size-xs); /* Consistent smaller font */
+    margin: var(--spacing-xxs) 0;
+    word-break: break-all; /* Ensure long words/URLs break */
+    white-space: normal;
+}
+
+#members-display.list-view-active .member-card .member-contact-details p strong {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#members-display.list-view-active .member-card p {
+    font-size: 0.85em; /* Specific value */
+    margin-bottom: 2px; /* Specific value */
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+#members-display.list-view-active .member-card a {
+    font-size: 0.85em; /* Specific value */
+}
+
+/* Membership level specific styles (mobile adjustments) */
+.silver-member.grid-view-active {
+    /* To override desktop box-shadow, we just ensure it's not present here */
+    box-shadow: none; /* desktop.css applies shadow, mobile.css explicitly removes */
+}
+.gold-member.grid-view-active {
+    box-shadow: none;
+}
+/* For list view, keep side border consistent with desktop variables */
+.silver-member.list-view-active {
+    border-left: 5px solid var(--highlight-border-silver);
+}
+.gold-member.list-view-active {
+    border-left: 5px solid var(--highlight-border-gold);
+}
+
+
+/* ========================================= */
+/* 6. Footer                 */
+/* ========================================= */
+
+#site-footer {
+    padding: var(--spacing-lg) 0; /* Reduced padding */
+}
+
+.footer-content {
+    grid-template-columns: 1fr; /* Single column for footer content */
+    gap: var(--spacing-lg); /* Using variable */
+    text-align: center;
+    padding-bottom: var(--spacing-md); /* Using variable */
+    border-bottom: 1px solid #777; /* Slightly darker border */
+}
+
+.footer-social {
+    justify-content: center;
+    margin-top: var(--spacing-sm); /* Using variable */
+}
+
+.footer-meta {
+    margin-top: var(--spacing-md); /* Using variable */
+}
+
+.copyright {
+    padding-top: var(--spacing-md); /* Using variable */
+    font-size: 0.75em; /* Specific value */
+}
+
+/* Adjustments for buttons on mobile */
+.btn.secondary-btn {
+    margin-left: 0;
+    margin-top: var(--spacing-sm); /* Using variable */
+}
+
+/* If you had hero CTAs that stack, this would be relevant */
+.hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm); /* Using variable */
+    align-items: center;
+}
