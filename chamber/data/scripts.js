@@ -1,14 +1,11 @@
-// Function to handle the hamburger menu toggle (if you plan to use JS for this)
-// For now, we're relying on pure CSS for the toggle, as implemented.
-// If you add other JS interactive elements, you'd add them here.
-
 // --- Member Directory Logic ---
 const gridButton = document.getElementById('grid-view');
 const listButton = document.getElementById('list-view');
 const membersDisplay = document.getElementById('members-display'); // This is for the full directory page
 
-// Adjusted path: assumes 'data' folder is sibling to 'index.html'
-const membersJSON = 'data/members.json'; // Path to your JSON data - Changed from data/members.json to members.json as per current setup implies it's in the root. If it's in 'data' folder, change this back.
+// Path to your JSON data - assuming 'data' folder is sibling to 'index.html' and 'directory.html'
+// and 'members.json' is inside the 'data' folder
+const membersJSON = 'data/members.json';
 
 async function getMemberData() {
     try {
@@ -17,18 +14,24 @@ async function getMemberData() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+
         // Only display members on the directory page if the element exists
         if (membersDisplay) {
             displayMembers(data); // Display members in default (grid) view on the directory page
         }
-        // Always display spotlight members on the homepage
+
+        // Always attempt to display spotlight members on the homepage
         displaySpotlightMembers(data);
+
     } catch (error) {
         console.error('Error fetching member data:', error);
-        if (membersDisplay) { // Check if membersDisplay exists before trying to set innerHTML
+        if (membersDisplay) {
             membersDisplay.innerHTML = '<p>Error loading member data. Please try again later.</p>';
         }
-        // No specific error message for spotlight, as it's optional content.
+        const spotlightContainer = document.querySelector('.business-preview-grid');
+        if (spotlightContainer) {
+            spotlightContainer.innerHTML = '<p>Error loading spotlight members.</p>';
+        }
     }
 }
 
@@ -46,9 +49,10 @@ function displayMembers(members) {
             memberCard.classList.add('silver-member');
         } else if (member.membershipLevel === 3) {
             memberCard.classList.add('gold-member');
+        } else {
+            memberCard.classList.add('basic-member'); // Or another default
         }
 
-        // Adjusted path: assumes 'images' folder is sibling to 'index.html'
         const imgPath = `images/members/${member.image}`; // Construct image path
 
         memberCard.innerHTML = `
@@ -61,6 +65,7 @@ function displayMembers(members) {
                 <p><strong>Address:</strong> ${member.address}</p>
                 <p><strong>Phone:</strong> ${member.phone}</p>
                 <p><strong>URL:</strong> <a href="${member.website}" target="_blank">${member.website.replace(/(^\w+:|^)\/\//, '')}</a></p>
+                <p><strong>Membership:</strong> ${getMembershipLevelText(member.membershipLevel)}</p>
             </div>
         `;
         membersDisplay.appendChild(memberCard);
@@ -76,24 +81,25 @@ function displaySpotlightMembers(members) {
 
     spotlightContainer.innerHTML = ''; // Clear existing placeholder content
 
-    // Filter for Gold and Silver members first
+    // Filter for Gold and Silver members only
     const eligibleMembers = members.filter(member => member.membershipLevel === 2 || member.membershipLevel === 3);
 
-    // If there aren't enough Gold/Silver, fill with other members
-    const allMembersExceptEligible = members.filter(member => member.membershipLevel !== 2 && member.membershipLevel !== 3);
-    const membersToChooseFrom = eligibleMembers.concat(allMembersExceptEligible);
-
-    // Shuffle array to get random members
-    for (let i = membersToChooseFrom.length - 1; i > 0; i--) {
+    // Shuffle the eligible members to get random ones
+    for (let i = eligibleMembers.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [membersToChooseFrom[i], membersToChooseFrom[j]] = [membersToChooseFrom[j], membersToChooseFrom[i]];
+        [eligibleMembers[i], eligibleMembers[j]] = [eligibleMembers[j], eligibleMembers[i]];
     }
 
-    // Select up to 3 members (or fewer if not enough are available)
-    const membersToShow = membersToChooseFrom.slice(0, 3);
+    // Select up to 3 members from the shuffled eligible list
+    const membersToShow = eligibleMembers.slice(0, 3);
+
+    if (membersToShow.length === 0) {
+        spotlightContainer.innerHTML = '<p>No Gold or Silver members currently in the spotlight.</p>';
+        return;
+    }
 
     membersToShow.forEach(member => {
-        const memberCard = document.createElement('div'); // Using div as per your existing HTML structure
+        const memberCard = document.createElement('div');
         memberCard.classList.add('business-card-preview');
 
         const imgPath = `images/members/${member.image}`; // Construct image path
@@ -107,13 +113,27 @@ function displaySpotlightMembers(members) {
             <div class="card-content">
                 <img src="${imgPath}" alt="${member.name} logo" class="business-image-placeholder">
                 <div class="contact-info">
-                    <p>EMAIL: info@${member.name.toLowerCase().replace(/\s/g, '')}.com</p> <p>PHONE: ${member.phone}</p>
-                    <p>URL: <a href="${member.website}" target="_blank">${member.website.replace(/(^\w+:|^)\/\//, '')}</a></p>
+                    <p><strong>Email:</strong> ${member.email || 'N/A'}</p>
+                    <p><strong>Phone:</strong> ${member.phone}</p>
+                    <p><strong>Address:</strong> ${member.address}</p>
+                    <p><strong>Website:</strong> <a href="${member.website}" target="_blank">${member.website.replace(/(^\w+:|^)\/\//, '')}</a></p>
+                    <p><strong>Level:</strong> ${getMembershipLevelText(member.membershipLevel)}</p>
                 </div>
             </div>
         `;
         spotlightContainer.appendChild(memberCard);
     });
+}
+
+// Helper function to get readable membership level text
+function getMembershipLevelText(level) {
+    switch (level) {
+        case 1: return 'Bronze Membership';
+        case 2: return 'Silver Membership';
+        case 3: return 'Gold Membership';
+        case 4: return 'Non-Profit Membership';
+        default: return 'Standard Membership';
+    }
 }
 
 
@@ -144,7 +164,8 @@ if (gridButton && listButton) {
 
 // --- Weather API Logic ---
 
-const WEATHER_API_KEY = "cee575af92a7660dcb65f2aefc3295ee";
+// Your OpenWeatherMap API Key
+const WEATHER_API_KEY = "cee575af92a7660dcb65f2aefc3295ee"; 
 const WEATHER_CITY = "Timbuktu";
 const WEATHER_COUNTRY_CODE = "ML"; // Mali
 
@@ -163,9 +184,9 @@ const forecastDay3Elem = document.getElementById('forecast-day3');
 
 
 async function getWeatherData() {
-    // This check ensures a valid key is present, remove "YOUR_OPENWEATHERMAP_API_KEY" if you already put your key
-    if (!WEATHER_API_KEY || WEATHER_API_KEY === "") {
-        console.error("OpenWeatherMap API Key is missing or not replaced. Please get one from openweathermap.org");
+    // This check ensures a valid key is present
+    if (!WEATHER_API_KEY || WEATHER_API_KEY === "") { // No need to check for "YOUR_OPENWEATHERMAP_API_KEY" anymore
+        console.error("OpenWeatherMap API Key is missing!");
         if (weatherConditionElem) weatherConditionElem.textContent = "API Key Missing!";
         return;
     }
@@ -174,21 +195,25 @@ async function getWeatherData() {
     const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${WEATHER_CITY},${WEATHER_COUNTRY_CODE}&units=imperial&appid=${WEATHER_API_KEY}`;
 
     try {
-        // Fetch Current Weather
-        const currentWeatherResponse = await fetch(currentUrl);
-        if (!currentWeatherResponse.ok) {
-            throw new Error(`HTTP error! status: ${currentWeatherResponse.status} from current weather API`);
+        // Fetch Current Weather (only if elements exist on the page)
+        if (currentTempElem || weatherConditionElem) {
+            const currentWeatherResponse = await fetch(currentUrl);
+            if (!currentWeatherResponse.ok) {
+                throw new Error(`HTTP error! status: ${currentWeatherResponse.status} from current weather API`);
+            }
+            const currentWeatherData = await currentWeatherResponse.json();
+            displayCurrentWeather(currentWeatherData);
         }
-        const currentWeatherData = await currentWeatherResponse.json();
-        displayCurrentWeather(currentWeatherData);
 
-        // Fetch Weather Forecast
-        const forecastWeatherResponse = await fetch(forecastUrl);
-        if (!forecastWeatherResponse.ok) {
-            throw new Error(`HTTP error! status: ${forecastWeatherResponse.status} from forecast weather API`);
+        // Fetch Weather Forecast (only if elements exist on the page)
+        if (forecastDay1Elem || forecastDay2Elem || forecastDay3Elem) {
+            const forecastWeatherResponse = await fetch(forecastUrl);
+            if (!forecastWeatherResponse.ok) {
+                throw new Error(`HTTP error! status: ${forecastWeatherResponse.status} from forecast weather API`);
+            }
+            const forecastWeatherData = await forecastWeatherResponse.json();
+            displayWeatherForecast(forecastWeatherData);
         }
-        const forecastWeatherData = await forecastWeatherResponse.json();
-        displayWeatherForecast(forecastWeatherData);
 
     } catch (error) {
         console.error('Error fetching weather data:', error);
@@ -201,7 +226,7 @@ async function getWeatherData() {
 
 function displayCurrentWeather(data) {
     if (currentTempElem) currentTempElem.textContent = Math.round(data.main.temp);
-    if (weatherConditionElem) weatherConditionElem.textContent = data.weather[0].description.replace(/\b\w/g, char => char.toUpperCase()); // Capitalize first letter of each word
+    if (weatherConditionElem) weatherConditionElem.textContent = data.weather[0].description.replace(/\b\w/g, char => char.toUpperCase());
     if (tempHighElem) tempHighElem.textContent = Math.round(data.main.temp_max);
     if (tempLowElem) tempLowElem.textContent = Math.round(data.main.temp_min);
     if (humidityElem) humidityElem.textContent = data.main.humidity;
@@ -215,7 +240,6 @@ function displayCurrentWeather(data) {
     if (weatherIconElem) {
         const iconCode = data.weather[0].icon;
         weatherIconElem.alt = data.weather[0].description;
-        // Optionally, update the weather icon src based on the API response
         weatherIconElem.src = `https://openweathermap.org/img/w/${iconCode}.png`;
     }
 }
@@ -224,8 +248,7 @@ function displayWeatherForecast(data) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    let forecastTemps = [];
-    let forecastDates = [];
+    let forecastDataForDisplay = []; // To store {dayName: "...", temp: "..."}
     let processedDays = new Set();
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -243,8 +266,11 @@ function displayWeatherForecast(data) {
             }).map(item => item.main.temp);
 
             if (dailyTemps.length > 0) {
-                forecastTemps.push(Math.round(Math.max(...dailyTemps)));
-                forecastDates.push(forecastDate); // Store the date to get the day name
+                const dayName = daysOfWeek[forecastDate.getDay()];
+                forecastDataForDisplay.push({
+                    dayName: dayName,
+                    temp: Math.round(Math.max(...dailyTemps))
+                });
                 processedDays.add(dayKey);
             }
         }
@@ -255,12 +281,10 @@ function displayWeatherForecast(data) {
     const forecastElements = [forecastDay1Elem, forecastDay2Elem, forecastDay3Elem];
 
     forecastElements.forEach((element, index) => {
-        if (element && forecastTemps[index] !== undefined) {
-            const dayName = daysOfWeek[forecastDates[index].getDay()];
-            element.closest('p').innerHTML = `${dayName}: <strong>${forecastTemps[index]}</strong>°F`;
+        if (element && forecastDataForDisplay[index]) {
+            element.textContent = `${forecastDataForDisplay[index].dayName}: ${forecastDataForDisplay[index].temp}°F`; // Added °F
         } else if (element) {
-            // Fallback for missing forecast data
-            element.closest('p').innerHTML = `Day ${index + 1}: <strong>--</strong>°F`;
+            element.textContent = `--°F`; // Fallback with °F
         }
     });
 }
@@ -271,21 +295,29 @@ function updateFooter() {
     const currentYear = new Date().getFullYear();
     const lastModified = document.lastModified;
 
-    const copyrightElem = document.querySelector('footer .footer-meta p:nth-of-type(3)');
-    const lastModifiedElem = document.querySelector('footer .footer-meta p:nth-of-type(4)');
+    const copyrightElem = document.getElementById('copyright-year');
+    const lastModifiedElem = document.getElementById('lastModified');
 
     if (copyrightElem) {
-        copyrightElem.textContent = `© ${currentYear} Timbuktu Chamber of Commerce`;
+        copyrightElem.textContent = currentYear;
     }
     if (lastModifiedElem) {
-        lastModifiedElem.textContent = `Last Modification: ${lastModified}`;
+        lastModifiedElem.textContent = lastModified;
     }
 }
 
 
 // Initial data fetch when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    getMemberData(); // This will fetch members and populate both directory (if on page) and spotlight
-    getWeatherData(); // This will populate the weather section on the home page
+    // Only fetch member data if either display element is present on the page
+    if (membersDisplay || document.querySelector('.business-preview-grid')) {
+        getMemberData(); // This will fetch members and populate both directory (if on page) and spotlight
+    }
+
+    // Only fetch weather data if weather elements are present on the page
+    if (currentTempElem || forecastDay1Elem) {
+        getWeatherData(); // This will populate the weather section on the home page
+    }
+
     updateFooter(); // Call the footer update function
 });

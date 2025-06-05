@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timbuktu Chamber of Commerce</title>
+    <meta name="description" content="The official website for the Timbuktu Chamber of Commerce, a resource hub for businesses, events, and community in Timbuktu.">
+    <meta name="author" content="Timbuktu Chamber of Commerce">
+
+    <meta property="og:title" content="Timbuktu Chamber of Commerce - Empowering Local Businesses">
+    <meta property="og:description" content="Connect, grow, and thrive with the Timbuktu Chamber of Commerce. Your hub for business resources, networking, and community events.">
+    <meta property="og:image" content="images/hero.jpg">
+    <meta property="og:url" content="https://davidpmolina.github.io/wdd231/chamber/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Timbuktu Chamber of Commerce">
+
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
+</head>
+<body>
+
+    <header id="site-header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/timbuktu-logo.png" alt="Timbuktu Chamber of Commerce Logo">
+                <div class="logo-text"> <h1>Timbuktu</h1>
+                    <p>Chamber of Commerce</p>
+                </div>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Directory</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="index.html#discover">Discover</a></li>
+                    <li><a href="#" class="search-icon">🔍</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-image-placeholder">
+                    <img src="images/hero.jpg" alt="Scalable, responsive hero image">
+                </div>
+                <a href="join.html" class="btn keynote-btn">Join the Chamber</a>
+            </div>
+        </section>
+
+        <section class="home-main-content">
+            <div class="container">
+                <h2>Home</h2>
+
+                <div class="home-grid">
+                    <div class="events-section">
+                        <h3>Events</h3>
+                        <div class="event-item-preview">
+                            <h4>Timbuktu Business Networking Mixer</h4>
+                            <p>Date: Thursday, June 20, 2025 at 5:30 PM</p>
+                            <p>Connect with local entrepreneurs, share ideas, and build valuable business relationships. Light refreshments will be served.</p>
+                            <p>Location: Oasis Convention Center, Grand Ballroom</p>
+                            <p>Cost: Free for Chamber Members / $15 for Non-Members</p>
+                            <p>RSVP Link: https://www.timbuktuchamber.org/events/mixer-june2025</p>
+                        </div>
+                    </div>
+
+                    <div class="weather-section">
+                        <h3>Current Weather</h3>
+                        <div class="weather-current">
+                            <img id="weather-icon" src="images/weather-icon.png" alt="Weather Icon">
+                            <p class="temp"><span id="current-temp">--</span>°F</p>
+                            <p class="condition" id="weather-condition">Loading...</p>
+                            <p>High: <span id="temp-high">--</span>°</p>
+                            <p>Low: <span id="temp-low">--</span>°</p>
+                            <p>Humidity: <span id="humidity">--</span>%</p>
+                            <p>Sunrise: <span id="sunrise-time">--</span></p>
+                            <p>Sunset: <span id="sunset-time">--</span></p>
+                        </div>
+                    </div>
+
+                    <div class="weather-forecast-section">
+                        <h3>Weather Forecast</h3>
+                        <div class="weather-forecast">
+                            <p><span id="forecast-day1">--</span>°F</p>
+                            <p><span id="forecast-day2">--</span>°F</p>
+                            <p><span id="forecast-day3">--</span>°F</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="business-preview-grid">
+                    <p>Loading member spotlights...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="discover" class="content-section">
+            <div class="container">
+                <h2>Discover What We Do</h2>
+                <p>The Timbuktu Chamber of Commerce is dedicated to fostering a vibrant business community, promoting local economic growth, and providing invaluable resources and networking opportunities for entrepreneurs and organizations in the city of Timbuktu and surrounding areas.</p>
+                <p>We work tirelessly to advocate for our members, connect businesses with patrons, and build a strong, supportive local economy. Our mission is to be the trusted authority and go-to resource for all business matters in Timbuktu.</p>
+            </div>
+        </section>
+
+        <section id="join" class="content-section">
+            <div class="container">
+                <h2>Join the Chamber</h2>
+                <p>Unlock unparalleled opportunities for growth, networking, and advocacy by becoming a member of the Timbuktu Chamber of Commerce.</p>
+                <div class="membership-benefits">
+                    <div class="benefit-item">
+                        <h3>Networking Opportunities</h3>
+                        <p>Connect with other business owners, industry leaders, and potential clients at our exclusive events.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Enhanced Visibility</h3>
+                        <p>Get listed in our prominent business directory and gain exposure to the local community.</p>
+                    </div>
+                </div>
+                <p class="text-center"><a href="join.html" class="btn primary-btn">Apply for Membership</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container footer-content">
+            <div class="footer-contact">
+                <h3>Timbuktu Chamber of Commerce</h3>
+                <p>10 Rue De La Paix</p>
+                <p>Timbuktu, Mali 999</p>
+                <p>Email: info@timbuktucc.org</p>
+                <p>Phone: (223) 555-2300</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="YouTube"><img src="images/social-youtube.png" alt="YouTube"></a>
+                <a href="#" aria-label="Twitter"><img src="images/social-twitter.png" alt="Twitter"></a>
+                <a href="#" aria-label="LinkedIn"><img src="images/social-linkedin.png" alt="LinkedIn"></a>
+            </div>
+            <div class="footer-meta">
+                <p>WDD231 Class Project</p>
+                <p>David Molina</p>
+                <p>&copy; <span id="copyright-year">20XX</span> Timbuktu Chamber of Commerce</p>
+                <p>Last Modification: <span id="lastModified"></span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="data/scripts.js"></script>
+</body>
+</html>
