@@ -59,6 +59,34 @@ body {
     margin: 0;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Example styling for the header text if needed */
+.header-content .logo-text .site-title-text {
+    font-size: 2em; /* Adjust as needed */
+    font-weight: bold;
+    color: #333; /* Example color */
+    margin-bottom: 0;
+}
+
+main h1 {
+    text-align: center;
+    /* You might want to add some margin or padding for spacing */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1em;
+}
+
 /* --- Mobile Menu Toggle (Hamburger Icon) --- */
 .menu-toggle {
     display: none; /* Hide the checkbox itself */
