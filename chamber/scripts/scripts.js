@@ -3,9 +3,8 @@ const gridButton = document.getElementById('grid-view');
 const listButton = document.getElementById('list-view');
 const membersDisplay = document.getElementById('members-display'); // This is for the full directory page
 
-// Path to your JSON data - assuming 'data' folder is sibling to 'index.html' and 'directory.html'
-// and 'members.json' is inside the 'data' folder
-const membersJSON = 'data/members.json';
+// Path to your JSON data - now relative to this scripts.js file
+const membersJSON = 'scripts/data/members.json'; // members.json is inside the 'data' folder, which is inside 'scripts'
 
 async function getMemberData() {
     try {
@@ -53,7 +52,7 @@ function displayMembers(members) {
             memberCard.classList.add('basic-member'); // Or another default
         }
 
-        const imgPath = `images/members/${member.image}`; // Construct image path
+        const imgPath = `images/members/${member.image}`; // Construct image path, relative to HTML file
 
         memberCard.innerHTML = `
             <img src="${imgPath}" alt="${member.name} logo" loading="lazy">
@@ -102,7 +101,7 @@ function displaySpotlightMembers(members) {
         const memberCard = document.createElement('div');
         memberCard.classList.add('business-card-preview');
 
-        const imgPath = `images/members/${member.image}`; // Construct image path
+        const imgPath = `images/members/${member.image}`; // Construct image path, relative to HTML file
 
         memberCard.innerHTML = `
             <div class="card-header">
@@ -185,7 +184,7 @@ const forecastDay3Elem = document.getElementById('forecast-day3');
 
 async function getWeatherData() {
     // This check ensures a valid key is present
-    if (!WEATHER_API_KEY || WEATHER_API_KEY === "") { // No need to check for "YOUR_OPENWEATHERMAP_API_KEY" anymore
+    if (!WEATHER_API_KEY || WEATHER_API_KEY === "") {
         console.error("OpenWeatherMap API Key is missing!");
         if (weatherConditionElem) weatherConditionElem.textContent = "API Key Missing!";
         return;
