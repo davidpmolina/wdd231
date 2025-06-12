@@ -23,9 +23,12 @@
     --dashed-border-color: #999;
     --highlight-border-silver: silver;
     --highlight-border-gold: gold;
+    --success-color: #28a745; /* New: for selected radio */
+    --info-color: #17a2b8; /* New: for non-profit */
 
     /* Define font sizes (optional, but good for scaling) */
     --font-size-base: 16px;
+    --font-size-xs: 0.8em; /* Added for mobile adjustments */
     --font-size-sm: 0.9em;
     --font-size-md: 1.1em;
     --font-size-lg: 1.2em;
@@ -34,6 +37,7 @@
     --font-size-xxxl: 2.5em;
 
     /* Spacing variables (optional) */
+    --spacing-xxs: 2px; /* Added for fine tuning */
     --spacing-xs: 5px;
     --spacing-sm: 10px;
     --spacing-md: 15px;
@@ -41,16 +45,20 @@
     --spacing-xl: 30px;
     --spacing-xxl: 40px;
     --spacing-xxxl: 60px;
+
+    /* Border Radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Replaced placeholder with a specific default */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-bg-color);
-    font-size: var(--font-size-base); /* Using variable */
+    font-size: var(--font-size-base);
 }
 
 /* Optional: Smooth scrolling for one-page navigation */
@@ -59,9 +67,9 @@ html {
 }
 
 .container {
-    max-width: 960px; /* Standard content width for desktop */
-    margin: 0 auto; /* Center the container */
-    padding: var(--spacing-lg); /* Using variable */
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
 }
 
 /* --- Utility Classes --- */
@@ -75,11 +83,11 @@ html {
 
 #site-header {
     background-color: var(--white-bg-color);
-    padding: var(--spacing-sm) var(--spacing-lg); /* Using variables */
+    padding: var(--spacing-sm) var(--spacing-lg);
     border-bottom: 1px solid var(--border-color);
     display: flex;
-    justify-content: center; /* Center the header content */
-    align-items: center; /* Vertically align items */
+    justify-content: center;
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -88,16 +96,15 @@ html {
 
 .header-content {
     display: flex;
-    justify-content: space-between; /* Space out logo and nav */
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
 .logo {
     display: flex;
-    flex-direction: row; /* Stack image and text vertically */
-    align-items: flex-start; /* Align logo content to the left */
-    /* text-decoration: none; Remove underline from logo link if it's a link */
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .logo img {
@@ -107,20 +114,20 @@ html {
 
 .logo-text {
     display: flex;
-    flex-direction: column; /* Stack h1 and p vertically */
-    align-items: flex-start; /* Align text to the left within its own column */
-    justify-content: center; /* Vertically center the text block if needed */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .logo h1 {
-    font-size: var(--font-size-xxl); /* Using variable */
+    font-size: var(--font-size-xxl);
     margin: 0;
     color: var(--text-color);
     line-height: 1;
 }
 
 .logo p {
-    font-size: var(--font-size-sm); /* Using variable */
+    font-size: var(--font-size-sm);
     margin: 0;
     color: var(--light-text-color);
     line-height: 1;
@@ -137,17 +144,15 @@ html {
     border: 0;
 }
 
-/* Example styling for the header text if needed */
 .header-content .logo-text .site-title-text {
-    font-size: 2em; /* Adjust as needed */
+    font-size: 2em;
     font-weight: bold;
-    color: #333; /* Example color */
+    color: #333;
     margin-bottom: 0;
 }
 
 main h1 {
     text-align: center;
-    /* You might want to add some margin or padding for spacing */
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px;
@@ -161,7 +166,7 @@ main h1 {
 
 /* Main Navigation */
 #main-nav {
-    display: block; /* Ensure desktop nav is always visible on desktop */
+    display: block;
 }
 
 #main-nav ul {
@@ -169,15 +174,15 @@ main h1 {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: var(--spacing-lg); /* Using variable */
-    align-items: center; /* Align nav items vertically */
+    gap: var(--spacing-lg);
+    align-items: center;
 }
 
 #main-nav ul li a {
     text-decoration: none;
     color: var(--light-text-color);
     font-weight: bold;
-    padding: var(--spacing-xs) 0; /* Using variable */
+    padding: var(--spacing-xs) 0;
     transition: color 0.3s ease;
 }
 
@@ -186,7 +191,7 @@ main h1 {
 }
 
 .search-icon {
-    font-size: var(--font-size-lg); /* Using variable */
+    font-size: var(--font-size-lg);
     color: var(--light-text-color);
     cursor: pointer;
 }
@@ -197,14 +202,14 @@ main h1 {
 
 .btn {
     display: inline-block;
-    padding: var(--spacing-sm) var(--spacing-lg); /* Using variables */
-    border-radius: var(--spacing-xs); /* Using variable */
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
     text-align: center;
-    white-space: nowrap; /* Prevent text wrapping inside button */
+    white-space: nowrap;
 }
 
 .btn.primary-btn {
@@ -221,7 +226,7 @@ main h1 {
     background-color: var(--secondary-color);
     color: var(--white-bg-color);
     border: none;
-    margin-left: var(--spacing-sm); /* Using variable */
+    margin-left: var(--spacing-sm);
 }
 
 .btn.secondary-btn:hover {
@@ -229,8 +234,8 @@ main h1 {
 }
 
 .btn.btn-small {
-    padding: var(--spacing-xs) var(--spacing-sm); /* Using variables */
-    font-size: var(--font-size-sm); /* Using variable */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
 }
 
 /* ========================================= */
@@ -239,22 +244,22 @@ main h1 {
 
 .hero-section {
     background: linear-gradient(to right,
-                rgba(220, 220, 220, 0.9) 0%,     /* Slightly darker light grey, starting at 0% */
-                rgba(255, 255, 255, 0.9) 50%,   /* White in the middle, slightly less transparent */
-                rgba(255, 200, 200, 0.9) 100%   /* A more noticeable but still light red, ending at 100% */
+                rgba(220, 220, 220, 0.9) 0%,
+                rgba(255, 255, 255, 0.9) 50%,
+                rgba(255, 200, 200, 0.9) 100%
               );
-    padding: var(--spacing-xxl) 0; /* Using variable */
+    padding: var(--spacing-xxl) 0;
     text-align: center;
     position: relative;
 }
 
 .hero-image-placeholder {
-    background-color: var(--border-color); /* Adjusted to match light grey */
+    background-color: var(--border-color);
     height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: var(--spacing-lg); /* Using variable */
+    margin-bottom: var(--spacing-lg);
     position: relative;
     overflow: hidden;
 }
@@ -268,99 +273,92 @@ main h1 {
 
 .hero-section .btn.keynote-btn {
     position: absolute;
-    bottom: var(--spacing-xxxl); /* Adjusted to variable */
-    right: var(--spacing-xxl); /* Adjusted to variable */
-    background-color: var(--dark-bg-color); /* Darker button color */
+    bottom: var(--spacing-xxxl);
+    right: var(--spacing-xxl);
+    background-color: var(--dark-bg-color);
     color: var(--white-bg-color);
-    padding: var(--spacing-sm) var(--spacing-lg); /* Using variables */
+    padding: var(--spacing-sm) var(--spacing-lg);
     text-decoration: none;
-    border-radius: var(--spacing-xs); /* Using variable */
+    border-radius: var(--border-radius-sm);
     font-weight: bold;
     transition: background-color 0.3s ease;
     z-index: 10;
 }
 
 .hero-section .btn.keynote-btn:hover {
-    background-color: var(--secondary-dark-color); /* Example hover */
+    background-color: var(--secondary-dark-color);
 }
 
 /* --- Main Home Content Section --- */
 .home-main-content {
     background-color: var(--white-bg-color);
-    padding: var(--spacing-lg) 0; /* Using variable */
+    padding: var(--spacing-lg) 0;
 }
 
 .home-main-content h2 {
-    font-size: var(--font-size-xxxl); /* Using variable */
+    font-size: var(--font-size-xxxl);
     border-bottom: 2px solid var(--text-color);
-    padding-bottom: var(--spacing-sm); /* Using variable */
-    margin-bottom: var(--spacing-lg); /* Using variable */
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
     text-align: left;
 }
 
 .home-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: var(--spacing-lg); /* Using variable */
-    margin-bottom: var(--spacing-xxl); /* Using variable */
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xxl);
 }
 
 .events-section,
 .weather-section,
 .weather-forecast-section {
-    background-color: var(--light-grey-bg); /* This is the light grey background for the *content* area */
-    padding: var(--spacing-lg); /* Using variable - this padding will now only apply to the *content below* the h3 */
-    border-radius: var(--spacing-xs); /* Using variable */
-    overflow: hidden; /* Crucial for ensuring the h3's negative margins don't break the parent's border-radius */
+    background-color: var(--light-grey-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
 }
 
 .events-section h3,
 .weather-section h3,
 .weather-forecast-section h3 {
-    background-color: var(--dark-bg-color); /* Dark background for the heading */
-    color: var(--white-bg-color); /* White text for the heading */
-    padding: var(--spacing-md) var(--spacing-lg); /* Padding inside the dark heading bar */
-    /*
-     * Negative margins to pull the h3 into the parent's padding area,
-     * making it span the full width of the parent and align with its top/side borders.
-     * The bottom margin pushes the content below it down, creating separation.
-     */
+    background-color: var(--dark-bg-color);
+    color: var(--white-bg-color);
+    padding: var(--spacing-md) var(--spacing-lg);
     margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-lg) calc(-1 * var(--spacing-lg));
-    font-size: var(--font-size-xl); /* Using variable */
-    text-align: left; /* Align text to left as per image */
+    font-size: var(--font-size-xl);
+    text-align: left;
 }
 
 /* Weather Specific Styles */
 .weather-current {
-    /* No padding-top needed here, as the h3's bottom margin handles the spacing */
     text-align: center;
 }
 
 .weather-current img {
     width: 60px;
     height: auto;
-    margin-bottom: var(--spacing-sm); /* Using variable */
+    margin-bottom: var(--spacing-sm);
 }
 
 .weather-current .temp {
-    font-size: 2.5em; /* Specific size for temperature */
+    font-size: 2.5em;
     font-weight: bold;
     margin: 0;
 }
 
 .weather-current p {
-    margin: var(--spacing-xs) 0; /* Using variable */
-    font-size: var(--font-size-sm); /* Using variable */
+    margin: var(--spacing-xs) 0;
+    font-size: var(--font-size-sm);
 }
 
 .weather-forecast {
-    /* No padding-top needed here, as the h3's bottom margin handles the spacing */
-    text-align: left; /* Forecast text seems left-aligned in the image */
+    text-align: left;
 }
 
 .weather-forecast p {
     font-weight: bold;
-    margin: var(--spacing-sm) 0; /* Using variable */
+    margin: var(--spacing-sm) 0;
 }
 
 /* Business Preview Grid */
@@ -368,77 +366,71 @@ main h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-xl);
-    margin-top: var(--spacing-xxl); /* Using variable */
+    margin-top: var(--spacing-xxl);
 }
 
 .business-card-preview {
-    background-color: var(--light-grey-bg); /* This is the light grey background for the *entire card* */
-    border-radius: var(--spacing-xs); /* Using variable */
+    background-color: var(--light-grey-bg);
+    border-radius: var(--border-radius-sm);
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    overflow: hidden; /* Keeps the rounded corners */
-    text-align: left; /* Align all text to the left now */
-    display: flex; /* Use flexbox to stack header, divider, and content */
+    overflow: hidden;
+    text-align: left;
+    display: flex;
     flex-direction: column;
 }
 
 .business-card-preview .card-header {
     background-color: var(--dark-bg-color);
     color: var(--white-bg-color);
-    padding: var(--spacing-md) var(--spacing-lg); /* Padding inside the dark bar */
-    text-align: center; /* Center the business name and tagline */
-    border-top-left-radius: var(--spacing-xs);
-    border-top-right-radius: var(--spacing-xs);
-    /* No negative margins needed here due to the new HTML structure for the header */
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    border-top-left-radius: var(--border-radius-sm);
+    border-top-right-radius: var(--border-radius-sm);
 }
 
 .business-card-preview .card-header h3 {
     font-size: var(--font-size-xl);
-    margin: 0; /* Remove default margin */
+    margin: 0;
     line-height: 1.2;
 }
 
 .business-card-preview .card-header .tag-line {
     font-size: var(--font-size-sm);
-    margin: var(--spacing-xs) 0 0 0; /* Small top margin for tagline, no bottom margin as divider follows */
+    margin: var(--spacing-xs) 0 0 0;
     line-height: 1.2;
-    color: var(--white-bg-color); /* Ensure tagline is white */
+    color: var(--white-bg-color);
 }
 
 .business-card-preview .divider {
     height: 1px;
-    background-color: var(--border-color); /* Or a slightly darker grey to match image */
-    margin: var(--spacing-md) var(--spacing-lg); /* Space above/below the line, and horizontal padding */
-    /* This margin now applies to the space within the card's overall padding,
-       so it correctly aligns. */
+    background-color: var(--border-color);
+    margin: var(--spacing-md) var(--spacing-lg);
 }
 
 .business-card-preview .card-content {
-    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Padding around content: right, bottom, left. No top padding here as divider provides space. */
-    display: flex; /* Use flexbox for image and contact info side-by-side */
-    align-items: flex-start; /* Align image and text at the top */
-    gap: var(--spacing-md); /* Space between image and text */
-    flex-grow: 1; /* Allow content to grow if card has fixed height */
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    flex-grow: 1;
 }
 
 .business-image-placeholder {
-    width: 75px;   /* Change this to your desired width */
-    height: 75px;  /* Change this to your desired height */
-
-    /* Keep these properties to ensure the image fills the space cleanly */
+    width: 75px;
+    height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
+    overflow: hidden;
     flex-shrink: 0;
-    border-radius: var(--border-radius); /* Your existing border-radius */
-    background-color: var(--light-grey-bg); /* Your existing background */
+    border-radius: var(--border-radius-sm);
+    background-color: var(--light-grey-bg);
 }
 
-/* The img inside ensures it scales properly within the placeholder */
 .business-image-placeholder img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Or 'cover' depending on desired cropping/fitting */
+    object-fit: contain;
 }
 
 .business-card-preview .contact-info {
@@ -448,22 +440,19 @@ main h1 {
 
 .business-card-preview .contact-info p {
     font-size: var(--font-size-sm);
-    margin: var(--spacing-xxs) 0; /* Adjust vertical spacing for contact lines */
+    margin: var(--spacing-xxs) 0;
     color: var(--light-text-color);
     line-height: 1.4;
-    /* Ensure text alignment is left for contact info */
-    text-align: left; 
+    text-align: left;
     word-break: break-all;
 }
-
-
 
 /* ========================================= */
 /* 5. General Content Sections      */
 /* ========================================= */
 
 .content-section {
-    padding: var(--spacing-xxxl) 0; /* Using variable */
+    padding: var(--spacing-xxxl) 0;
     background-color: var(--white-bg-color);
     border-bottom: 1px solid var(--border-color);
 }
@@ -473,13 +462,13 @@ main h1 {
 }
 
 .content-section:nth-of-type(even) {
-    background-color: #f9f9f9; /* Slightly different background for alternating sections */
+    background-color: #f9f9f9;
 }
 
 .content-section h2 {
     text-align: center;
-    font-size: var(--font-size-xxxl); /* Using variable */
-    margin-bottom: var(--spacing-xxl); /* Using variable */
+    font-size: var(--font-size-xxxl);
+    margin-bottom: var(--spacing-xxl);
     color: var(--text-color);
 }
 
@@ -487,47 +476,47 @@ main h1 {
 .membership-benefits {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg); /* Using variable */
-    margin-top: var(--spacing-xl); /* Using variable */
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
 }
 
 .benefit-item {
     background-color: var(--light-grey-bg);
-    padding: var(--spacing-lg); /* Using variable */
-    border-radius: var(--spacing-xs); /* Using variable */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .benefit-item h3 {
-    font-size: var(--font-size-lg); /* Using variable */
+    font-size: var(--font-size-lg);
     margin-top: 0;
     color: var(--primary-color);
 }
 
 /* ========================================= */
-/* 6. Member Directory        */
+/* 6. Member Directory          */
 /* ========================================= */
 
 .directory-intro {
     text-align: center;
-    margin-bottom: 25px; /* Specific value */
-    font-size: var(--font-size-md); /* Using variable */
+    margin-bottom: 25px;
+    font-size: var(--font-size-md);
     color: var(--light-text-color);
 }
 
 .menu-toggle-buttons {
     text-align: center;
-    margin-bottom: var(--spacing-lg); /* Using variable */
+    margin-bottom: var(--spacing-lg);
 }
 
 .menu-toggle-buttons button {
     background-color: var(--light-grey-bg);
     border: 1px solid var(--border-color);
-    padding: 8px 15px; /* Specific values */
-    margin: 0 var(--spacing-xs); /* Using variable */
+    padding: 8px 15px;
+    margin: 0 var(--spacing-xs);
     cursor: pointer;
-    border-radius: var(--spacing-xs); /* Using variable */
+    border-radius: var(--border-radius-sm);
     font-weight: bold;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -546,18 +535,18 @@ main h1 {
 #members-display.grid-view-active {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg); /* Using variable */
-    padding: var(--spacing-sm); /* Using variable */
+    gap: var(--spacing-lg);
+    padding: var(--spacing-sm);
     background-color: #f9f9f9;
-    border-radius: 8px; /* Specific value */
+    border-radius: 8px;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }
 
 #members-display.grid-view-active .member-card {
     background-color: var(--white-bg-color);
     border: 1px solid var(--border-color);
-    padding: var(--spacing-lg); /* Using variable */
-    border-radius: 8px; /* Specific value */
+    padding: var(--spacing-lg);
+    border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.2s ease-in-out;
@@ -571,20 +560,20 @@ main h1 {
     max-width: 100px;
     height: auto;
     border-radius: 50%;
-    margin-bottom: var(--spacing-md); /* Using variable */
+    margin-bottom: var(--spacing-md);
     border: 3px solid var(--light-grey-bg);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #members-display.grid-view-active .member-card h3 {
-    font-size: var(--font-size-xl); /* Using variable */
-    margin-bottom: var(--spacing-xs); /* Using variable */
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xs);
     color: var(--primary-color);
 }
 
 #members-display.grid-view-active .member-card p {
-    font-size: 0.95em; /* Specific value */
-    margin-bottom: var(--spacing-xs); /* Using variable */
+    font-size: 0.95em;
+    margin-bottom: var(--spacing-xs);
     color: var(--light-text-color);
 }
 
@@ -607,9 +596,9 @@ main h1 {
 #members-display.list-view-active {
     display: flex;
     flex-direction: column;
-    gap: 1px; /* Specific value */
+    gap: 1px;
     border: 1px solid var(--border-color);
-    border-radius: 8px; /* Specific value */
+    border-radius: 8px;
     overflow: hidden;
     background-color: #f9f9f9;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
@@ -617,7 +606,7 @@ main h1 {
 
 #members-display.list-view-active .member-card {
     background-color: var(--white-bg-color);
-    padding: var(--spacing-md) var(--spacing-lg); /* Using variables */
+    padding: var(--spacing-md) var(--spacing-lg);
     display: grid;
     grid-template-columns: 80px 2fr 1.2fr 1.2fr 1fr;
     align-items: center;
@@ -644,13 +633,13 @@ main h1 {
 }
 
 #members-display.list-view-active .member-card h3 {
-    font-size: var(--font-size-lg); /* Using variable */
+    font-size: var(--font-size-lg);
     margin: 0;
     text-align: left;
 }
 
 #members-display.list-view-active .member-card p {
-    font-size: var(--font-size-sm); /* Using variable */
+    font-size: var(--font-size-sm);
     margin: 0;
     text-align: left;
     white-space: nowrap;
@@ -659,7 +648,7 @@ main h1 {
 }
 
 #members-display.list-view-active .member-card a {
-    font-size: var(--font-size-sm); /* Using variable */
+    font-size: var(--font-size-sm);
     text-align: left;
 }
 
@@ -683,57 +672,270 @@ main h1 {
 
 
 /* ========================================= */
-/* 7. Footer         */
+/* 7. Footer           */
 /* ========================================= */
 
 #site-footer {
     background-color: var(--dark-bg-color);
     color: var(--white-bg-color);
-    padding: var(--spacing-xxl) 0; /* Using variable */
+    padding: var(--spacing-xxl) 0;
 }
 
 .footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: var(--spacing-xl); /* Using variable */
-    padding-bottom: var(--spacing-lg); /* Using variable */
-    border-bottom: 1px solid #666; /* Specific color */
+    gap: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid #666;
 }
 
 .footer-contact h3,
 .footer-social h3,
 .footer-meta h3 {
-    font-size: var(--font-size-lg); /* Using variable */
-    margin-bottom: var(--spacing-md); /* Using variable */
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
     color: var(--white-bg-color);
 }
 
 .footer-contact p {
-    margin: var(--spacing-xs) 0; /* Using variable */
-    font-size: var(--font-size-sm); /* Using variable */
+    margin: var(--spacing-xs) 0;
+    font-size: var(--font-size-sm);
 }
 
 .footer-social {
     display: flex;
-    gap: var(--spacing-md); /* Using variable */
+    gap: var(--spacing-md);
     align-items: flex-start;
-    margin-top: var(--spacing-md); /* Using variable */
+    margin-top: var(--spacing-md);
 }
 
 .footer-social img {
-    width: var(--spacing-xl); /* Using variable */
-    height: var(--spacing-xl); /* Using variable */
+    width: var(--spacing-xl);
+    height: var(--spacing-xl);
     filter: brightness(0) invert(1);
 }
 
 .footer-meta p {
-    font-size: 0.8em; /* Specific value */
-    margin: var(--spacing-xs) 0; /* Using variable */
+    font-size: 0.8em;
+    margin: var(--spacing-xs) 0;
 }
 
 .copyright {
     text-align: center;
-    padding-top: var(--spacing-lg); /* Using variable */
-    font-size: 0.8em; /* Specific value */
-    color: #bbb; /* Specific color */
+    padding-top: var(--spacing-lg);
+    font-size: 0.8em;
+    color: #bbb;
+}
+
+/* ========================================= */
+/* 8. Join Page Form Styles (New)          */
+/* ========================================= */
+
+.membership-form {
+    background-color: var(--white-bg-color);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: var(--spacing-xl) auto;
+}
+
+.membership-form h3 {
+    text-align: center;
+    font-size: var(--font-size-xxl);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+.membership-form fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.membership-form legend {
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: var(--text-color);
+    padding: 0 var(--spacing-xs);
+}
+
+.membership-form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.membership-form input[type="text"],
+.membership-form input[type="email"],
+.membership-form input[type="tel"],
+.membership-form textarea {
+    width: calc(100% - (2 * var(--spacing-sm)));
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--light-grey-bg);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.membership-form input[type="text"]:focus,
+.membership-form input[type="email"]:focus,
+.membership-form input[type="tel"]:focus,
+.membership-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+    background-color: var(--white-bg-color);
+}
+
+.membership-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Radio Button Membership Levels as Cards */
+.membership-form .membership-levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.membership-form .membership-levels-grid label {
+    display: flex;
+    flex-direction: column; /* Changed to column to put dot to the left of text */
+    align-items: flex-start; /* Align text to the left */
+    padding: var(--spacing-lg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    background-color: var(--light-grey-bg);
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.membership-form .membership-levels-grid label:hover {
+    border-color: var(--primary-color);
+    background-color: #e9ecef;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.membership-form .membership-levels-grid input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Custom radio indicator (outer circle) */
+.membership-form .membership-levels-grid label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    background-color: var(--white-bg-color);
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    transition: all 0.3s ease;
+}
+
+/* Custom radio indicator when checked (inner dot) */
+.membership-form .membership-levels-grid input[type="radio"]:checked + label::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--white-bg-color);
+    border-radius: 50%;
+    position: absolute;
+    top: calc(var(--spacing-lg) + 5px);
+    left: calc(var(--spacing-lg) + 5px);
+    z-index: 1;
+}
+
+/* Styling for the text content within the radio labels */
+.membership-form .membership-levels-grid label strong {
+    font-size: var(--font-size-lg);
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+    margin-left: calc(20px + var(--spacing-sm)); /* Push text to the right of the dot */
+}
+
+.membership-form .membership-levels-grid label p {
+    font-size: var(--font-size-sm);
+    color: var(--light-text-color);
+    margin: 0;
+    line-height: 1.4;
+    margin-left: calc(20px + var(--spacing-sm)); /* Push text to the right of the dot */
+}
+
+/* Specific color for Non-Profit */
+.membership-form label[for="np"] {
+    border-color: var(--info-color);
+}
+.membership-form label[for="np"]:hover {
+    border-color: var(--info-color);
+}
+.membership-form input[type="radio"]:checked + label[for="np"]::before {
+    background-color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+/* Specific color for Bronze */
+.membership-form label[for="bronze"] {
+    border-color: #CD7F32;
+}
+.membership-form label[for="bronze"]:hover {
+    border-color: #A65A17;
+}
+.membership-form input[type="radio"]:checked + label[for="bronze"]::before {
+    background-color: #CD7F32;
+    border-color: #A65A17;
+}
+
+/* Specific color for Silver */
+.membership-form label[for="silver"] {
+    border-color: silver;
+}
+.membership-form label[for="silver"]:hover {
+    border-color: #A8A8A8;
+}
+.membership-form input[type="radio"]:checked + label[for="silver"]::before {
+    background-color: silver;
+    border-color: #A8A8A8;
+}
+
+/* Specific color for Gold */
+.membership-form label[for="gold"] {
+    border-color: gold;
+}
+.membership-form label[for="gold"]:hover {
+    border-color: #DAA520;
+}
+.membership-form input[type="radio"]:checked + label[for="gold"]::before {
+    background-color: gold;
+    border-color: #DAA520;
+}
+
+/* Adjust general label for radio group to avoid conflict with card labels */
+.membership-form fieldset legend + label {
+    display: none;
+}
+
+.membership-form button[type="submit"] {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-lg);
+    margin-top: var(--spacing-xl);
 }

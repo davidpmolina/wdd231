@@ -9,53 +9,53 @@
 /* ========================================= */
 
 body {
-    font-size: var(--font-size-base); /* Ensure base font size is readable on mobile, consistent with desktop variable */
+    font-size: var(--font-size-base);
 }
 
 .container {
-    padding: var(--spacing-md); /* Reduce padding on smaller screens */
+    padding: var(--spacing-md);
 }
 
 /* ========================================= */
-/* 2. Header                 */
+/* 2. Header             */
 /* ========================================= */
 
 #site-header {
-    flex-wrap: wrap; /* Allow items to wrap if space is tight */
-    padding: var(--spacing-sm) var(--spacing-md); /* Using variables */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Lighter shadow on mobile */
+    flex-wrap: wrap;
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .header-content {
-    justify-content: space-between; /* Logo on left, hamburger on right */
+    justify-content: space-between;
     width: 100%;
 }
 
 .logo {
     display: flex;
-    flex-direction: row; /* Make children (img and .logo-text) sit side-by-side */
-    align-items: center; /* Vertically align items in the middle */
-    gap: var(--spacing-xs); /* Smaller gap for mobile */
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 .logo img {
-    width: 40px; /* Smaller logo on mobile */
+    width: 40px;
 }
 
 .logo-text {
     display: flex;
-    flex-direction: column; /* Stack h1 and p vertically */
-    align-items: flex-start; /* Align text to the left */
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
 }
 
 .logo h1 {
-    font-size: var(--font-size-xxl); /* Smaller title text */
+    font-size: var(--font-size-xxl);
     margin: 0;
 }
 
 .logo p {
-    font-size: 0.7em; /* Smaller subtitle text */
+    font-size: 0.7em;
     margin: 0;
 }
 
@@ -70,17 +70,15 @@ body {
     border: 0;
 }
 
-/* Example styling for the header text if needed */
 .header-content .logo-text .site-title-text {
-    font-size: 2em; /* Adjust as needed */
+    font-size: 2em;
     font-weight: bold;
-    color: #333; /* Example color */
+    color: #333;
     margin-bottom: 0;
 }
 
 main h1 {
     text-align: center;
-    /* You might want to add some margin or padding for spacing */
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px;
@@ -89,18 +87,18 @@ main h1 {
 
 /* --- Mobile Menu Toggle (Hamburger Icon) --- */
 .menu-toggle {
-    display: none; /* Hide the checkbox itself */
+    display: none;
 }
 
 .hamburger-menu {
-    display: flex; /* Make the label visible */
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 20px;
     cursor: pointer;
     z-index: 100;
-    padding: var(--spacing-xs); /* Add padding for easier tapping */
+    padding: var(--spacing-xs);
 }
 
 .hamburger-menu .bar {
@@ -126,29 +124,29 @@ main h1 {
 
 /* --- Mobile Navigation Visibility and Styling --- */
 #main-nav {
-    width: 100%; /* Take full width when revealed */
-    order: 2; /* Position it below the header on smaller screens */
-    position: absolute; /* Position relative to the header */
-    top: 100%; /* Place it right below the header */
+    width: 100%;
+    order: 2;
+    position: absolute;
+    top: 100%;
     left: 0;
     background-color: var(--white-bg-color);
     border-top: 1px solid var(--border-color);
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     z-index: 999;
 
-    max-height: 0; /* Start with height 0 */
-    opacity: 0; /* Start fully transparent */
-    overflow: hidden; /* Hide content that goes beyond max-height */
-    transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Add transition for animation */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
 }
 
 #menu-toggle:checked ~ #main-nav {
-    max-height: 300px; /* Adjust this value to be greater than the maximum possible height of your menu content */
-    opacity: 1; /* Fade in to fully opaque */
+    max-height: 300px;
+    opacity: 1;
 }
 
 #main-nav ul {
-    flex-direction: column; /* Stack nav items vertically */
+    flex-direction: column;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -160,7 +158,7 @@ main h1 {
 }
 
 #main-nav ul li a {
-    padding: var(--spacing-md) 0; /* Larger clickable area */
+    padding: var(--spacing-md) 0;
     display: block;
     border-bottom: 1px solid var(--light-grey-bg);
     color: var(--text-color);
@@ -178,47 +176,47 @@ main h1 {
 }
 
 .search-icon {
-    display: none; /* Hide search icon on mobile */
+    display: none;
 }
 
 /* ========================================= */
-/* 3. Home Section            */
+/* 3. Home Section             */
 /* ========================================= */
 
 .hero-section {
-    padding: var(--spacing-lg) 0; /* Less padding */
+    padding: var(--spacing-lg) 0;
 }
 
 .hero-image-placeholder {
-    height: 180px; /* Smaller height for hero image on mobile */
-    margin-bottom: var(--spacing-sm); /* Using variable */
+    height: 180px;
+    margin-bottom: var(--spacing-sm);
 }
 
 .hero-section .btn.keynote-btn {
-    position: static; /* Remove absolute positioning */
-    margin: var(--spacing-sm) auto 0 auto; /* Center button horizontally */
+    position: static;
+    margin: var(--spacing-sm) auto 0 auto;
     display: block;
     width: fit-content;
 }
 
 /* --- Main Home Content Section --- */
 .home-main-content h2 {
-    font-size: var(--font-size-xxl); /* Slightly smaller title */
+    font-size: var(--font-size-xxl);
     text-align: center;
     border-bottom: none;
     padding-bottom: 0;
-    margin-bottom: var(--spacing-md); /* Using variable */
+    margin-bottom: var(--spacing-md);
 }
 
 .home-grid {
-    grid-template-columns: 1fr; /* Single column layout for grid on mobile */
-    gap: var(--spacing-md); /* Smaller gap */
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
 }
 
 .events-section,
 .weather-section,
 .weather-forecast-section {
-    padding: var(--spacing-md); /* Smaller padding */
+    padding: var(--spacing-md);
 }
 
 .events-section h3,
@@ -228,26 +226,26 @@ main h1 {
 }
 
 .weather-current .temp {
-    font-size: 2em; /* Slightly smaller temperature */
+    font-size: 2em;
 }
 
 .weather-current img {
-    width: 50px; /* Slightly smaller weather icon */
+    width: 50px;
 }
 
 .business-preview-grid {
-    grid-template-columns: 1fr; /* Single column for business cards on mobile */
-    gap: var(--spacing-md); /* Smaller gap */
-    margin-top: var(--spacing-xl); /* Using variable */
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
 }
 
 .business-card-preview {
     padding: var(--spacing-md);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Lighter shadow */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
 .business-image-placeholder {
-    width: 80px; /* Smaller image placeholder */
+    width: 80px;
     height: 80px;
 }
 
@@ -256,16 +254,16 @@ main h1 {
 /* ========================================= */
 
 .content-section {
-    padding: var(--spacing-xxl) 0; /* Less vertical padding */
+    padding: var(--spacing-xxl) 0;
 }
 
 .content-section h2 {
-    font-size: var(--font-size-xxxl); /* Smaller section titles */
-    margin-bottom: var(--spacing-xl); /* Using variable */
+    font-size: var(--font-size-xxxl);
+    margin-bottom: var(--spacing-xl);
 }
 
 .membership-benefits {
-    grid-template-columns: 1fr; /* Stack benefits vertically */
+    grid-template-columns: 1fr;
 }
 
 .benefit-item {
@@ -279,40 +277,40 @@ main h1 {
 }
 
 /* ========================================= */
-/* 5. Member Directory          */
+/* 5. Member Directory           */
 /* ========================================= */
 
 .directory-intro {
     font-size: var(--font-size-md);
-    margin-bottom: var(--spacing-lg); /* Using variable */
+    margin-bottom: var(--spacing-lg);
 }
 
 .menu-toggle-buttons {
-    margin-bottom: var(--spacing-md); /* Using variable */
+    margin-bottom: var(--spacing-md);
 }
 
 .menu-toggle-buttons button {
-    padding: 6px 12px; /* Specific values */
+    padding: 6px 12px;
     font-size: var(--font-size-sm);
 }
 
 /* Mobile: Grid View (Default - stacked) */
 #members-display.grid-view-active {
-    grid-template-columns: 1fr; /* Single column for grid on mobile */
+    grid-template-columns: 1fr;
     gap: var(--spacing-md);
-    padding: var(--spacing-xs); /* Reduce padding */
+    padding: var(--spacing-xs);
     box-shadow: none;
     background-color: transparent;
 }
 
 #members-display.grid-view-active .member-card {
     padding: var(--spacing-md);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Lighter shadow */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
 #members-display.grid-view-active .member-card img {
-    max-width: 80px; /* Smaller image */
-    margin-bottom: var(--spacing-sm); /* Using variable */
+    max-width: 80px;
+    margin-bottom: var(--spacing-sm);
 }
 
 #members-display.grid-view-active .member-card h3 {
@@ -326,25 +324,24 @@ main h1 {
 /* Mobile: List View */
 #members-display.list-view-active {
     display: flex;
-    flex-direction: column; /* Explicitly stack the individual .member-card items vertically */
-    gap: 0; /* No gap between list items, they will be separated by borders */
-    padding: 0; /* No extra padding for the container itself */
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
 }
 
 #members-display.list-view-active .member-card {
     background-color: var(--white-bg-color);
-    /* CRITICAL CHANGE: Use a two-column grid for EACH list item */
     display: grid;
-    grid-template-columns: 80px 1fr; /* Image (80px wide) | Text content (fills remaining space) */
-    gap: var(--spacing-md); /* Gap between the image and the text content */
-    align-items: center; /* Vertically align content in the row */
-    
-    padding: var(--spacing-sm) var(--spacing-md); /* Adjust padding for list item */
-    border-bottom: 1px solid var(--light-grey-bg); /* Use border for vertical separation */
-    box-shadow: none; /* No shadow for list items */
-    border-radius: 0; /* No border-radius for list items (makes them look like rows) */
+    grid-template-columns: 80px 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--light-grey-bg);
+    box-shadow: none;
+    border-radius: 0;
     transition: background-color 0.2s ease;
-    text-align: left; /* Default text alignment for list items */
+    text-align: left;
 }
 
 #members-display.list-view-active .member-card:first-child {
@@ -352,47 +349,46 @@ main h1 {
 }
 
 #members-display.list-view-active .member-card img {
-    width: 60px; /* Smaller image in list view */
+    width: 60px;
     height: 60px;
     object-fit: cover;
-    border-radius: 50%; /* Still round */
-    /* Position the image within its grid column */
-    grid-column: 1 / 2; 
-    grid-row: 1 / span 3; /* Span multiple rows to align with text */
-    margin-right: 0; /* Reset margins */
-    margin-bottom: 0; /* Reset margins */
+    border-radius: 50%;
+    grid-column: 1 / 2;
+    grid-row: 1 / span 3;
+    margin-right: 0;
+    margin-bottom: 0;
 }
 
 #members-display.list-view-active .member-card .member-header-info {
-    grid-column: 2 / 3; /* Place in the second grid column */
-    grid-row: 1 / 2; /* First row within the right column */
-    text-align: left; /* Align text left */
-    margin-bottom: 0; /* Adjust spacing */
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    text-align: left;
+    margin-bottom: 0;
 }
 
 #members-display.list-view-active .member-card h3 {
-    font-size: var(--font-size-md); /* Smaller name font for list */
-    margin: 0; /* Remove default margins */
+    font-size: var(--font-size-md);
+    margin: 0;
 }
 
 #members-display.list-view-active .member-card .member-slogan {
-    font-size: var(--font-size-xs); /* Smaller slogan font for list */
+    font-size: var(--font-size-xs);
     font-style: italic;
-    color: var(--text-color-light);
-    margin: 0; /* Remove default margins */
+    color: var(--light-text-color);
+    margin: 0;
 }
 
 #members-display.list-view-active .member-card .member-contact-details {
-    grid-column: 2 / 3; /* Place in the second grid column */
-    grid-row: 2 / 4; /* Spans from row 2 to 4 within the right column */
-    text-align: left; /* Align text left */
-    margin-top: var(--spacing-xs); /* Space below header info */
+    grid-column: 2 / 3;
+    grid-row: 2 / 4;
+    text-align: left;
+    margin-top: var(--spacing-xs);
 }
 
 #members-display.list-view-active .member-card .member-contact-details p {
-    font-size: var(--font-size-xs); /* Consistent smaller font */
+    font-size: var(--font-size-xs);
     margin: var(--spacing-xxs) 0;
-    word-break: break-all; /* Ensure long words/URLs break */
+    word-break: break-all;
     white-space: normal;
 }
 
@@ -402,21 +398,20 @@ main h1 {
 }
 
 #members-display.list-view-active .member-card p {
-    font-size: 0.85em; /* Specific value */
-    margin-bottom: 2px; /* Specific value */
+    font-size: 0.85em;
+    margin-bottom: 2px;
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
 }
 
 #members-display.list-view-active .member-card a {
-    font-size: 0.85em; /* Specific value */
+    font-size: 0.85em;
 }
 
 /* Membership level specific styles (mobile adjustments) */
 .silver-member.grid-view-active {
-    /* To override desktop box-shadow, we just ensure it's not present here */
-    box-shadow: none; /* desktop.css applies shadow, mobile.css explicitly removes */
+    box-shadow: none;
 }
 .gold-member.grid-view-active {
     box-shadow: none;
@@ -431,45 +426,132 @@ main h1 {
 
 
 /* ========================================= */
-/* 6. Footer                 */
+/* 6. Footer             */
 /* ========================================= */
 
 #site-footer {
-    padding: var(--spacing-lg) 0; /* Reduced padding */
+    padding: var(--spacing-lg) 0;
 }
 
 .footer-content {
-    grid-template-columns: 1fr; /* Single column for footer content */
-    gap: var(--spacing-lg); /* Using variable */
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
     text-align: center;
-    padding-bottom: var(--spacing-md); /* Using variable */
-    border-bottom: 1px solid #777; /* Slightly darker border */
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid #777;
 }
 
 .footer-social {
     justify-content: center;
-    margin-top: var(--spacing-sm); /* Using variable */
+    margin-top: var(--spacing-sm);
 }
 
 .footer-meta {
-    margin-top: var(--spacing-md); /* Using variable */
+    margin-top: var(--spacing-md);
 }
 
 .copyright {
-    padding-top: var(--spacing-md); /* Using variable */
-    font-size: 0.75em; /* Specific value */
+    padding-top: var(--spacing-md);
+    font-size: 0.75em;
 }
 
 /* Adjustments for buttons on mobile */
 .btn.secondary-btn {
     margin-left: 0;
-    margin-top: var(--spacing-sm); /* Using variable */
+    margin-top: var(--spacing-sm);
 }
 
 /* If you had hero CTAs that stack, this would be relevant */
 .hero-ctas {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm); /* Using variable */
+    gap: var(--spacing-sm);
     align-items: center;
+}
+
+/* ========================================= */
+/* 7. Join Page Form Styles (Mobile)       */
+/* ========================================= */
+
+.membership-form {
+    padding: var(--spacing-md);
+    margin: var(--spacing-lg) auto;
+}
+
+.membership-form h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+}
+
+.membership-form fieldset {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.membership-form legend {
+    font-size: var(--font-size-md);
+}
+
+.membership-form label {
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.membership-form input[type="text"],
+.membership-form input[type="email"],
+.membership-form input[type="tel"],
+.membership-form textarea {
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+}
+
+.membership-form textarea {
+    min-height: 80px;
+}
+
+/* Radio Button Membership Levels as Cards (Mobile adjustments) */
+.membership-form .membership-levels-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.membership-form .membership-levels-grid label {
+    padding: var(--spacing-md);
+    flex-direction: column; /* Stack text within the label */
+    align-items: flex-start; /* Align text to the left */
+    text-align: left;
+}
+
+/* Custom radio indicator (outer circle) */
+.membership-form .membership-levels-grid label::before {
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    right: auto;
+    transform: none;
+}
+
+/* Custom radio indicator when checked (inner dot) */
+.membership-form .membership-levels-grid input[type="radio"]:checked + label::after {
+    top: calc(var(--spacing-md) + 5px);
+    left: calc(var(--spacing-md) + 5px);
+    right: auto;
+    transform: none;
+}
+
+/* Shift content to the right of the dot for both strong and p */
+.membership-form .membership-levels-grid label strong {
+    margin-left: calc(20px + var(--spacing-sm)); /* Dot width + spacing */
+    margin-bottom: var(--spacing-xxs);
+    font-size: var(--font-size-md);
+}
+.membership-form .membership-levels-grid label p {
+    margin-left: calc(20px + var(--spacing-sm)); /* Dot width + spacing */
+    font-size: var(--font-size-xs);
+}
+
+.membership-form button[type="submit"] {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    margin-top: var(--spacing-lg);
 }

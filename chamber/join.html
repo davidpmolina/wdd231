@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Timbuktu Chamber of Commerce</title>
+    <meta name="description" content="Apply for membership with the Timbuktu Chamber of Commerce to unlock growth, networking, and advocacy opportunities.">
+    <meta name="author" content="Timbuktu Chamber of Commerce">
+
+    <meta property="og:title" content="Join the Timbuktu Chamber of Commerce">
+    <meta property="og:description" content="Unlock unparalleled opportunities for growth, networking, and advocacy by becoming a member of the Timbuktu Chamber of Commerce.">
+    <meta property="og:image" content="https://davidpmolina.github.io/wdd231/chamber/images/hero.jpg">
+    <meta property="og:url" content="https://davidpmolina.github.io/wdd231/chamber/join.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Timbuktu Chamber of Commerce">
+
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
+</head>
+<body id="join-page">
+
+    <header id="site-header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/timbuktu-logo.png" alt="Timbuktu Chamber of Commerce Logo">
+                <div class="logo-text">
+                    <p class="site-title-text">Timbuktu</p>
+                    <p>Chamber of Commerce</p>
+                </div>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Directory</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="index.html#discover">Discover</a></li>
+                    <li><a href="#" class="search-icon">🔍</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="visually-hidden">Join the Timbuktu Chamber of Commerce</h1>
+
+        <section id="join-membership" class="content-section">
+            <div class="container">
+                <h2>Join the Chamber</h2>
+                <p>Unlock unparalleled opportunities for growth, networking, and advocacy by becoming a member of the Timbuktu Chamber of Commerce.</p>
+                <div class="membership-benefits">
+                    <div class="benefit-item">
+                        <h3>Networking Opportunities</h3>
+                        <p>Connect with other business owners, industry leaders, and potential clients at our exclusive events.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Enhanced Visibility</h3>
+                        <p>Get listed in our prominent business directory and gain exposure to the local community.</p>
+                    </div>
+                    </div>
+
+                <div class="membership-form">
+                    <h3>Membership Application</h3>
+                    <form action="#" method="post">
+                        <fieldset>
+                            <legend>Your Information</legend>
+                            <label for="fullName">Full Name:</label>
+                            <input type="text" id="fullName" name="fullName" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="organization">Organization Name (if applicable):</label>
+                            <input type="text" id="organization" name="organization">
+
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone">
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Membership Level</legend>
+                            <input type="radio" id="np" name="membershipLevel" value="np" required>
+                            <label for="np">NP Membership (No Fee) - For Non-Profit Organizations</label><br>
+
+                            <input type="radio" id="bronze" name="membershipLevel" value="bronze">
+                            <label for="bronze">Bronze Membership ($50/year) - Basic access, directory listing</label><br>
+
+                            <input type="radio" id="silver" name="membershipLevel" value="silver">
+                            <label for="silver">Silver Membership ($100/year) - Enhanced directory listing, event discounts</label><br>
+
+                            <input type="radio" id="gold" name="membershipLevel" value="gold">
+                            <label for="gold">Gold Membership ($250/year) - Premium directory, all events free, speaking opportunities</label>
+                        </fieldset>
+
+                        <label for="businessDescription">Tell us about your business/organization (200 words max):</label>
+                        <textarea id="businessDescription" name="businessDescription" rows="5" maxlength="200"></textarea>
+
+                        <input type="hidden" id="submissionTimestamp" name="submissionTimestamp">
+
+                        <button type="submit" class="btn primary-btn">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container footer-content">
+            <div class="footer-contact">
+                <h3>Timbuktu Chamber of Commerce</h3>
+                <p>10 Rue De La Paix</p>
+                <p>Timbuktu, Mali 999</p>
+                <p>Email: info@timbuktucc.org</p>
+                <p>Phone: (223) 555-2300</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="YouTube"><img src="images/social-youtube.png" alt="YouTube"></a>
+                <a href="#" aria-label="Twitter"><img src="images/social-twitter.png" alt="Twitter"></a>
+                <a href="#" aria-label="LinkedIn"><img src="images/social-linkedin.png" alt="LinkedIn"></a>
+            </div>
+            <div class="footer-meta">
+                <p>WDD231 Class Project</p>
+                <p>David Molina</p>
+                <p>&copy; <span id="copyright-year">20XX</span> Timbuktu Chamber of Commerce</p>
+                <p>Last Modification: <span id="lastModified"></span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>

@@ -164,7 +164,7 @@ if (gridButton && listButton) {
 // --- Weather API Logic ---
 
 // Your OpenWeatherMap API Key
-const WEATHER_API_KEY = "cee575af92a7660dcb65f2aefc3295ee"; 
+const WEATHER_API_KEY = "cee575af92a7660dcb65f2aefc3295ee";
 const WEATHER_CITY = "Timbuktu";
 const WEATHER_COUNTRY_CODE = "ML"; // Mali
 
@@ -305,6 +305,13 @@ function updateFooter() {
     }
 }
 
+// --- Join Page Logic (New) ---
+function initializeJoinPage() {
+    const timestampField = document.getElementById('submissionTimestamp');
+    if (timestampField) {
+        timestampField.value = new Date().toISOString();
+    }
+}
 
 // Initial data fetch when the page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -319,4 +326,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateFooter(); // Call the footer update function
+
+    // Initialize Join Page specific logic if on the join.html page
+    if (document.body.id === 'join-page' || document.querySelector('#join-membership')) {
+        initializeJoinPage();
+    }
 });
