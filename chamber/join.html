@@ -17,18 +17,20 @@
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles/desktop.css">
     <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body id="join-page">
 
     <header id="site-header">
         <div class="container header-content">
-            <div class="logo">
-                <img src="images/timbuktu-logo.png" alt="Timbuktu Chamber of Commerce Logo">
+            <a href="index.html" class="logo"> <img src="images/timbuktu-logo.png" alt="Timbuktu Chamber of Commerce Logo">
                 <div class="logo-text">
-                    <p class="site-title-text">Timbuktu</p>
-                    <p>Chamber of Commerce</p>
+                    <h1 class="site-title-text">Timbuktu</h1> <p>Chamber of Commerce</p>
                 </div>
-            </div>
+            </a>
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
             <label for="menu-toggle" class="hamburger-menu">
                 <span class="bar"></span>
@@ -40,7 +42,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="directory.html">Directory</a></li>
-                    <li><a href="join.html">Join</a></li>
+                    <li><a href="join.html" class="active">Join</a></li>
                     <li><a href="index.html#discover">Discover</a></li>
                     <li><a href="#" class="search-icon">🔍</a></li>
                 </ul>
@@ -48,64 +50,97 @@
         </div>
     </header>
 
-    <main>
-        <h1 class="visually-hidden">Join the Timbuktu Chamber of Commerce</h1>
+    <main role="main" class="container content-section"> <h1 class="visually-hidden">Join the Timbuktu Chamber of Commerce</h1>
 
-        <section id="join-membership" class="content-section">
-            <div class="container">
-                <h2>Join the Chamber</h2>
-                <p>Unlock unparalleled opportunities for growth, networking, and advocacy by becoming a member of the Timbuktu Chamber of Commerce.</p>
-                <div class="membership-benefits">
-                    <div class="benefit-item">
-                        <h3>Networking Opportunities</h3>
-                        <p>Connect with other business owners, industry leaders, and potential clients at our exclusive events.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <h3>Enhanced Visibility</h3>
-                        <p>Get listed in our prominent business directory and gain exposure to the local community.</p>
-                    </div>
-                    </div>
+        <section id="join-membership" class="join-page-layout"> <h2>Join the Chamber</h2>
+            <p>Unlock unparalleled opportunities for growth, networking, and advocacy by becoming a member of the Timbuktu Chamber of Commerce.</p>
+            
+            <div class="membership-form">
+                <h3>Membership Application</h3>
+                <form action="thankyou.html" method="get"> <fieldset>
+                        <legend>Your Information</legend>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required autocomplete="given-name" title="Please enter your first name.">
 
-                <div class="membership-form">
-                    <h3>Membership Application</h3>
-                    <form action="#" method="post">
-                        <fieldset>
-                            <legend>Your Information</legend>
-                            <label for="fullName">Full Name:</label>
-                            <input type="text" id="fullName" name="fullName" required>
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required autocomplete="family-name" title="Please enter your last name.">
 
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" title="Please enter a valid email address.">
+                        
+                        <label for="mobileNumber">Mobile Number:</label>
+                        <input type="tel" id="mobileNumber" name="mobileNumber" autocomplete="tel" pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}" title="Phone number (e.g., 123-456-7890 or 1234567890)">
 
-                            <label for="organization">Organization Name (if applicable):</label>
-                            <input type="text" id="organization" name="organization">
+                        <label for="businessName">Business/Organization Name:</label>
+                        <input type="text" id="businessName" name="businessName" autocomplete="organization" title="Please enter your business or organization name.">
 
-                            <label for="phone">Phone Number:</label>
-                            <input type="tel" id="phone" name="phone">
-                        </fieldset>
+                        <label for="orgTitle">Organizational Title:</label>
+                        <input type="text" id="orgTitle" name="orgTitle" autocomplete="organization-title" pattern="[A-Za-z\s-]{7,}" title="Please enter your organizational title (at least 7 characters, letters, spaces, and hyphens only).">
 
-                        <fieldset>
-                            <legend>Membership Level</legend>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Membership Level</legend>
+                        <div class="membership-levels-grid">
                             <input type="radio" id="np" name="membershipLevel" value="np" required>
-                            <label for="np">NP Membership (No Fee) - For Non-Profit Organizations</label><br>
+                            <label for="np" class="membership-card"> <strong>NP Membership</strong>
+                                <p>(No Fee) - For Non-Profit Organizations</p>
+                            </label>
 
                             <input type="radio" id="bronze" name="membershipLevel" value="bronze">
-                            <label for="bronze">Bronze Membership ($50/year) - Basic access, directory listing</label><br>
+                            <label for="bronze" class="membership-card"> <strong>Bronze Membership</strong>
+                                <p>($50/year) - Basic access, directory listing</p>
+                            </label>
 
                             <input type="radio" id="silver" name="membershipLevel" value="silver">
-                            <label for="silver">Silver Membership ($100/year) - Enhanced directory listing, event discounts</label><br>
+                            <label for="silver" class="membership-card"> <strong>Silver Membership</strong>
+                                <p>($100/year) - Enhanced directory listing, event discounts</p>
+                            </label>
 
                             <input type="radio" id="gold" name="membershipLevel" value="gold">
-                            <label for="gold">Gold Membership ($250/year) - Premium directory, all events free, speaking opportunities</label>
-                        </fieldset>
+                            <label for="gold" class="membership-card"> <strong>Gold Membership</strong>
+                                <p>($250/year) - Premium directory, all events free, speaking opportunities</p>
+                            </label>
+                        </div>
+                    </fieldset>
 
-                        <label for="businessDescription">Tell us about your business/organization (200 words max):</label>
-                        <textarea id="businessDescription" name="businessDescription" rows="5" maxlength="200"></textarea>
+                    <label for="businessDescription">Tell us about your business/organization (200 words max):</label>
+                    <textarea id="businessDescription" name="businessDescription" rows="5" maxlength="200"></textarea>
 
-                        <input type="hidden" id="submissionTimestamp" name="submissionTimestamp">
+                    <input type="hidden" id="submissionTimestamp" name="submissionTimestamp">
 
-                        <button type="submit" class="btn primary-btn">Submit Application</button>
-                    </form>
+                    <button type="submit" class="btn primary-btn">Submit Application</button>
+                </form>
+            </div>
+
+            <div class="membership-benefits-container">
+                <h3>Membership Benefits by Level</h3>
+                <div class="membership-card np-level" data-level="np">
+                    <h3>Non-Profit Membership</h3>
+                    <p>Special membership designed to support non-profit organizations in our community.</p>
+                    <p class="price">No Fee</p>
+                    <a href="#" class="btn secondary-btn view-details" data-modal-target="npModal">View Details</a>
+                </div>
+
+                <div class="membership-card bronze-level" data-level="bronze">
+                    <h3>Bronze Membership</h3>
+                    <p>Our entry-level membership, perfect for startups and small businesses looking to get involved.</p>
+                    <p class="price">$50 / year</p>
+                    <a href="#" class="btn secondary-btn view-details" data-modal-target="bronzeModal">View Details</a>
+                </div>
+
+                <div class="membership-card silver-level" data-level="silver">
+                    <h3>Silver Membership</h3>
+                    <p>Ideal for growing businesses that want more visibility and networking opportunities.</p>
+                    <p class="price">$100 / year</p>
+                    <a href="#" class="btn secondary-btn view-details" data-modal-target="silverModal">View Details</a>
+                </div>
+
+                <div class="membership-card gold-level" data-level="gold">
+                    <h3>Gold Membership</h3>
+                    <p>Our premium offering for established businesses seeking maximum benefits and leadership roles.</p>
+                    <p class="price">$250 / year</p>
+                    <a href="#" class="btn secondary-btn view-details" data-modal-target="goldModal">View Details</a>
                 </div>
             </div>
         </section>
@@ -121,18 +156,85 @@
                 <p>Phone: (223) 555-2300</p>
             </div>
             <div class="footer-social">
-                <a href="#" aria-label="YouTube"><img src="images/social-youtube.png" alt="YouTube"></a>
-                <a href="#" aria-label="Twitter"><img src="images/social-twitter.png" alt="Twitter"></a>
-                <a href="#" aria-label="LinkedIn"><img src="images/social-linkedin.png" alt="LinkedIn"></a>
+                <a href="#" aria-label="YouTube"><img src="images/social-youtube.png" alt="YouTube icon"></a>
+                <a href="#" aria-label="Twitter"><img src="images/social-twitter.png" alt="Twitter icon"></a>
+                <a href="#" aria-label="LinkedIn"><img src="images/social-linkedin.png" alt="LinkedIn icon"></a>
             </div>
             <div class="footer-meta">
                 <p>WDD231 Class Project</p>
                 <p>David Molina</p>
-                <p>&copy; <span id="copyright-year">20XX</span> Timbuktu Chamber of Commerce</p>
+                <p>&copy; <span id="copyright-year"></span> Timbuktu Chamber of Commerce</p>
                 <p>Last Modification: <span id="lastModified"></span></p>
             </div>
         </div>
     </footer>
+
+    <div id="bronzeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal-target="bronzeModal">&times;</span> <h3>Bronze Membership Details</h3>
+            <p>Our Bronze Membership is an excellent starting point for new and small businesses. It offers essential benefits to get you connected and visible within the Timbuktu community.</p>
+            <h4>Key Benefits:</h4>
+            <ul>
+                <li>Basic listing in the online Chamber Directory</li>
+                <li>Access to monthly Chamber newsletters and updates</li>
+                <li>Opportunity to attend Chamber-sponsored events at standard pricing</li>
+                <li>Participation in selected Chamber committees</li>
+            </ul>
+            <p><strong>Price: $50 / year</strong></p>
+        </div>
+    </div>
+
+    <div id="silverModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal-target="silverModal">&times;</span>
+            <h3>Silver Membership Details</h3>
+            <p>The Silver Membership provides enhanced opportunities for growing businesses, offering more visibility and discounted access to events.</p>
+            <h4>Key Benefits:</h4>
+            <ul>
+                <li>Enhanced listing in the online Chamber Directory with logo and extended description</li>
+                <li>Discounted rates on all Chamber-sponsored events, workshops, and seminars</li>
+                <li>Priority invitations to exclusive networking mixers</li>
+                <li>Eligibility for special recognition programs</li>
+                <li>Business spotlight opportunities in the Chamber newsletter</li>
+            </ul>
+            <p><strong>Price: $100 / year</strong></p>
+        </div>
+    </div>
+
+    <div id="goldModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal-target="goldModal">&times;</span>
+            <h3>Gold Membership Details</h3>
+            <p>Our Gold Membership is designed for established businesses seeking maximum exposure, influence, and premium benefits within the Timbuktu Chamber of Commerce.</p>
+            <h4>Key Benefits:</h4>
+            <ul>
+                <li>Premium listing in the online Chamber Directory with priority placement, expanded details, and media links</li>
+                <li>Free access to all Chamber-sponsored events, workshops, and seminars</li>
+                <li>Exclusive invitations to VIP networking events and leadership breakfasts</li>
+                <li>Opportunities for speaking engagements and presentation at Chamber events</li>
+                <li>Dedicated support from Chamber staff for business inquiries and referrals</li>
+                <li>Prominent logo placement on Chamber website and marketing materials</li>
+            </ul>
+            <p><strong>Price: $250 / year</strong></p>
+        </div>
+    </div>
+
+    <div id="npModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal-target="npModal">&times;</span>
+            <h3>Non-Profit (NP) Membership Details</h3>
+            <p>The Non-Profit Membership is a no-fee option specifically tailored to support and integrate non-profit organizations into the Chamber community.</p>
+            <h4>Key Benefits:</h4>
+            <ul>
+                <li>Basic listing in the online Chamber Directory for non-profits</li>
+                <li>Access to monthly Chamber newsletters and updates</li>
+                <li>Opportunity to promote non-profit events on the Chamber community calendar</li>
+                <li>Networking opportunities with local businesses for partnerships and support</li>
+            </ul>
+            <p><strong>Price: No Fee</strong></p>
+        </div>
+    </div>
+
     <script src="scripts/scripts.js"></script>
 </body>
 </html>

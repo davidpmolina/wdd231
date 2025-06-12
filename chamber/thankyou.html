@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Joining! - Timbuktu Chamber of Commerce</title>
+    <meta name="description" content="Thank you for your membership application to the Timbuktu Chamber of Commerce.">
+    
+    <link rel="stylesheet" href="styles/desktop.css"> <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="site-header"> <div class="container header-content"> <a href="index.html" class="logo">
+                <img src="images/timbuktu-logo.png" alt="Timbuktu Chamber of Commerce Logo"> <div class="logo-text">
+                    <p class="site-title-text">Timbuktu</p> <p>Chamber of Commerce</p>
+                </div>
+            </a>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Directory</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="index.html#discover">Discover</a></li> <li><a href="#" class="search-icon">🔍</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container content-section">
+        <h1 class="page-title">Thank You for Your Application!</h1>
+        <section class="confirmation-details">
+            <p>We appreciate you taking the time to apply for membership with the Timbuktu Chamber of Commerce.</p>
+            <p>Your application has been successfully received. We will review it shortly and get back to you.</p>
+
+            <div class="submitted-info">
+                <h2>Submitted Information Summary:</h2>
+                <p><strong>First Name:</strong> <span id="displayFirstName"></span></p>
+                <p><strong>Last Name:</strong> <span id="displayLastName"></span></p>
+                <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+                <p><strong>Mobile Number:</strong> <span id="displayMobileNumber"></span></p>
+                <p><strong>Business Name:</strong> <span id="displayBusinessName"></span></p>
+                <p><strong>Submission Timestamp:</strong> <span id="displayTimestamp"></span></p>
+            </div>
+
+            <p class="return-home-message">You can return to the <a href="index.html">homepage</a> or explore our <a href="directory.html">member directory</a>.</p>
+        </section>
+    </main>
+
+    <footer id="site-footer"> <div class="container footer-content"> <div class="footer-contact"> <h3>Timbuktu Chamber of Commerce</h3>
+                <p>10 Rue De La Paix</p> <p>Timbuktu, Mali 999</p> <p>Email: info@timbuktucc.org</p> <p>Phone: (223) 555-2300</p> </div>
+            <div class="footer-social">
+                <a href="#" aria-label="YouTube"><img src="images/social-youtube.png" alt="YouTube"></a> <a href="#" aria-label="Twitter"><img src="images/social-twitter.png" alt="Twitter"></a> <a href="#" aria-label="LinkedIn"><img src="images/social-linkedin.png" alt="LinkedIn"></a> </div>
+            <div class="footer-meta">
+                <p>WDD231 Class Project</p> <p>David Molina</p> <p>&copy; <span id="copyright-year">20XX</span> Timbuktu Chamber of Commerce</p> <p>Last Modification: <span id="lastModified"></span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>

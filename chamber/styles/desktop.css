@@ -4,7 +4,7 @@
 */
 
 /* ========================================= */
-/* 1. Root & Base Styles       */
+/* 1. Root & Base Styles         */
 /* ========================================= */
 
 :root {
@@ -49,6 +49,11 @@
     /* Border Radius */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
+    --border-radius-circle: 50%; /* New for radio buttons */
+
+    /* --- NEW VARIABLE --- */
+    --box-shadow-sm: 0 2px 5px rgba(0,0,0,0.08);
+    --box-shadow-md: 0 4px 10px rgba(0,0,0,0.1); /* Defined for use in .membership-form */
 }
 
 body {
@@ -105,6 +110,10 @@ html {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    /* --- START: Fix for purple line in logo text --- */
+    text-decoration: none; /* Removes the underline from the link */
+    color: inherit; /* Inherits color from parent, preventing default link color */
+    /* --- END: Fix for purple line in logo text --- */
 }
 
 .logo img {
@@ -119,17 +128,18 @@ html {
     justify-content: center;
 }
 
-.logo h1 {
+/* Ensure these text elements within the logo maintain their intended colors */
+.logo-text .site-title-text { /* Targeted h1, now p */
     font-size: var(--font-size-xxl);
     margin: 0;
-    color: var(--text-color);
+    color: var(--text-color); /* Explicitly set color */
     line-height: 1;
 }
 
-.logo p {
+.logo-text p {
     font-size: var(--font-size-sm);
     margin: 0;
-    color: var(--light-text-color);
+    color: var(--light-text-color); /* Explicitly set color */
     line-height: 1;
 }
 
@@ -142,13 +152,6 @@ html {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
-}
-
-.header-content .logo-text .site-title-text {
-    font-size: 2em;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 0;
 }
 
 main h1 {
@@ -190,6 +193,10 @@ main h1 {
     color: var(--primary-color);
 }
 
+#main-nav ul li a.active {
+    color: var(--primary-color); /* Added active state for current page */
+}
+
 .search-icon {
     font-size: var(--font-size-lg);
     color: var(--light-text-color);
@@ -197,7 +204,7 @@ main h1 {
 }
 
 /* ========================================= */
-/* 3. Buttons          */
+/* 3. Buttons            */
 /* ========================================= */
 
 .btn {
@@ -244,10 +251,10 @@ main h1 {
 
 .hero-section {
     background: linear-gradient(to right,
-                rgba(220, 220, 220, 0.9) 0%,
-                rgba(255, 255, 255, 0.9) 50%,
-                rgba(255, 200, 200, 0.9) 100%
-              );
+                                 rgba(220, 220, 220, 0.9) 0%,
+                                 rgba(255, 255, 255, 0.9) 50%,
+                                 rgba(255, 200, 200, 0.9) 100%
+                                );
     padding: var(--spacing-xxl) 0;
     text-align: center;
     position: relative;
@@ -472,7 +479,7 @@ main h1 {
     color: var(--text-color);
 }
 
-/* Membership Benefits */
+/* Membership Benefits (Original) */
 .membership-benefits {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -727,215 +734,527 @@ main h1 {
     color: #bbb;
 }
 
+---
+
 /* ========================================= */
-/* 8. Join Page Form Styles (New)          */
+/* 8. Join Page Specific Styles (Specific to join.html) */
 /* ========================================= */
 
-.membership-form {
-    background-color: var(--white-bg-color);
+/* --- MODIFIED FOR CENTERING FORM --- */
+#join-page .content-section.join-page-layout {
+    display: grid;
+    /* On desktop, we want two columns: form and membership cards */
+    grid-template-columns: minmax(450px, 700px) 1fr; /* Form column with min/max width, then remaining space */
+    gap: var(--spacing-xl);
+    align-items: flex-start; /* Align content to the top */
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+    /* Center the grid itself within the .container */
+    justify-content: center; /* This will center the grid if its total width is less than .container's max-width */
+}
+
+#join-page .membership-form {
+    grid-column: 1 / 2; /* Place form in the first column */
+    background-color: var(--light-grey-bg); /* Matches screenshot */
     padding: var(--spacing-xl);
     border-radius: var(--border-radius-md);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    max-width: 700px;
-    margin: var(--spacing-xl) auto;
+    box-shadow: var(--box-shadow-md); /* Use the defined variable */
+    /* max-width is now handled by the grid-template-columns for a more robust layout */
+    /* max-width: 700px; */ /* Constrain form width */
+
+    /* Remove margin: 0; here to allow auto margins in the future if needed,
+        but with grid, it's generally handled by grid-template-columns and justify-self */
+    /* --- ADDED FOR CENTERING FORM WITHIN ITS GRID CELL IF CELL IS WIDER --- */
+    margin-left: auto;
+    margin-right: auto;
+    /* You might prefer a more specific max-width here if the grid cell itself is very wide */
+    max-width: 100%; /* Ensures it doesn't overflow its grid cell */
+    text-align: left;
 }
 
-.membership-form h3 {
-    text-align: center;
+#join-page .membership-form h3 {
     font-size: var(--font-size-xxl);
     color: var(--primary-color);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
     border-bottom: 2px solid var(--border-color);
     padding-bottom: var(--spacing-sm);
+    text-align: left; /* Override previous center alignment */
 }
 
-.membership-form fieldset {
+#join-page .membership-form fieldset {
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-md);
     padding: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
 }
 
-.membership-form legend {
+#join-page .membership-form legend {
     font-size: var(--font-size-lg);
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--secondary-color);
     padding: 0 var(--spacing-xs);
 }
 
-.membership-form label {
+#join-page .membership-form label {
     display: block;
-    margin-bottom: var(--spacing-xs);
     margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xxs);
     font-weight: bold;
     color: var(--text-color);
+    font-size: var(--font-size-sm);
 }
 
-.membership-form input[type="text"],
-.membership-form input[type="email"],
-.membership-form input[type="tel"],
-.membership-form textarea {
-    width: calc(100% - (2 * var(--spacing-sm)));
+#join-page .membership-form input[type="text"],
+#join-page .membership-form input[type="email"],
+#join-page .membership-form input[type="tel"],
+#join-page .membership-form textarea {
+    width: calc(100% - (2 * var(--spacing-sm))); /* Adjust to fit padding */
     padding: var(--spacing-sm);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
     font-size: var(--font-size-base);
     color: var(--text-color);
-    background-color: var(--light-grey-bg);
+    background-color: var(--white-bg-color); /* Lighter background for form inputs */
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.membership-form input[type="text"]:focus,
-.membership-form input[type="email"]:focus,
-.membership-form input[type="tel"]:focus,
-.membership-form textarea:focus {
+#join-page .membership-form input[type="text"]:focus,
+#join-page .membership-form input[type="email"]:focus,
+#join-page .membership-form input[type="tel"]:focus,
+#join-page .membership-form textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
     outline: none;
     background-color: var(--white-bg-color);
 }
 
-.membership-form textarea {
+#join-page .membership-form textarea {
     resize: vertical;
     min-height: 100px;
 }
 
 /* Radio Button Membership Levels as Cards */
-.membership-form .membership-levels-grid {
+#join-page .membership-levels-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(2, 1fr); /* Two columns for desktop */
+    gap: var(--spacing-md);
     margin-top: var(--spacing-md);
 }
 
-.membership-form .membership-levels-grid label {
+#join-page .membership-levels-grid label {
     display: flex;
-    flex-direction: column; /* Changed to column to put dot to the left of text */
-    align-items: flex-start; /* Align text to the left */
+    flex-direction: column;
+    align-items: center; /* Center content within the card */
+    background-color: var(--white-bg-color);
     padding: var(--spacing-lg);
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius-md);
     cursor: pointer;
-    background-color: var(--light-grey-bg);
     transition: all 0.3s ease;
-    position: relative;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative; /* For custom radio button */
+    font-weight: normal; /* Override bold from general label */
+    text-align: center;
+    box-shadow: var(--box-shadow-sm); /* Use the defined variable */
+    margin-top: 0; /* Override general label margin-top */
 }
 
-.membership-form .membership-levels-grid label:hover {
+#join-page .membership-levels-grid label:hover {
     border-color: var(--primary-color);
-    background-color: #e9ecef;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: var(--box-shadow-md); /* Use the defined variable */
+    transform: translateY(-2px);
 }
 
-.membership-form .membership-levels-grid input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+#join-page .membership-levels-grid input[type="radio"] {
+    display: none; /* Hide default radio button */
 }
 
 /* Custom radio indicator (outer circle) */
-.membership-form .membership-levels-grid label::before {
+#join-page .membership-levels-grid label::before {
     content: '';
-    display: block;
+    display: inline-block;
     width: 20px;
     height: 20px;
     border: 2px solid var(--primary-color);
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle);
     background-color: var(--white-bg-color);
     position: absolute;
-    top: var(--spacing-lg);
-    left: var(--spacing-lg);
-    transition: all 0.3s ease;
+    top: var(--spacing-md); /* Position closer to the top of the card */
+    right: var(--spacing-md);
+    transform: none; /* Remove previous transform */
+    transition: all 0.2s ease;
 }
 
 /* Custom radio indicator when checked (inner dot) */
-.membership-form .membership-levels-grid input[type="radio"]:checked + label::after {
+#join-page .membership-levels-grid input[type="radio"]:checked + label::after {
     content: '';
     display: block;
     width: 10px;
     height: 10px;
-    background-color: var(--white-bg-color);
-    border-radius: 50%;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-circle);
     position: absolute;
-    top: calc(var(--spacing-lg) + 5px);
-    left: calc(var(--spacing-lg) + 5px);
-    z-index: 1;
+    top: calc(var(--spacing-md) + 5px); /* Center dot within the outer circle */
+    right: calc(var(--spacing-md) + 5px); /* Center dot */
 }
 
-/* Styling for the text content within the radio labels */
-.membership-form .membership-levels-grid label strong {
+#join-page .membership-levels-grid input[type="radio"]:checked + label {
+    border-color: var(--primary-color);
+    background-color: var(--light-grey-bg);
+}
+
+#join-page .membership-levels-grid label strong {
     font-size: var(--font-size-lg);
-    color: var(--text-color);
+    color: var(--primary-color);
     margin-bottom: var(--spacing-xs);
-    margin-left: calc(20px + var(--spacing-sm)); /* Push text to the right of the dot */
+    margin-left: 0; /* Remove left margin from general label */
 }
-
-.membership-form .membership-levels-grid label p {
+#join-page .membership-levels-grid label p {
     font-size: var(--font-size-sm);
     color: var(--light-text-color);
-    margin: 0;
-    line-height: 1.4;
-    margin-left: calc(20px + var(--spacing-sm)); /* Push text to the right of the dot */
+    margin: 0; /* Override general p margin */
+    margin-left: 0; /* Remove left margin from general label */
 }
 
 /* Specific color for Non-Profit */
-.membership-form label[for="np"] {
+#join-page .membership-form label[for="np"] {
     border-color: var(--info-color);
 }
-.membership-form label[for="np"]:hover {
+#join-page .membership-form label[for="np"]:hover {
     border-color: var(--info-color);
 }
-.membership-form input[type="radio"]:checked + label[for="np"]::before {
-    background-color: var(--info-color);
-    border-color: var(--info-color);
+#join-page .membership-form input[type="radio"]:checked + label[for="np"]::before {
+    border-color: var(--info-color); /* Just border for custom radio, not background */
 }
+#join-page .membership-levels-grid input[type="radio"]:checked + label[for="np"]::after {
+    background-color: var(--info-color); /* Inner dot color */
+}
+#join-page .membership-levels-grid label[for="np"] strong { /* Added strong specific to NP for color */
+    color: var(--info-color);
+}
+
 
 /* Specific color for Bronze */
-.membership-form label[for="bronze"] {
+#join-page .membership-form label[for="bronze"] {
     border-color: #CD7F32;
 }
-.membership-form label[for="bronze"]:hover {
+#join-page .membership-form label[for="bronze"]:hover {
     border-color: #A65A17;
 }
-.membership-form input[type="radio"]:checked + label[for="bronze"]::before {
+#join-page .membership-form input[type="radio"]:checked + label[for="bronze"]::before {
+    border-color: #CD7F32;
+}
+#join-page .membership-levels-grid input[type="radio"]:checked + label[for="bronze"]::after {
     background-color: #CD7F32;
-    border-color: #A65A17;
 }
+#join-page .membership-levels-grid label[for="bronze"] strong {
+    color: #CD7F32;
+}
+
 
 /* Specific color for Silver */
-.membership-form label[for="silver"] {
+#join-page .membership-form label[for="silver"] {
     border-color: silver;
 }
-.membership-form label[for="silver"]:hover {
+#join-page .membership-form label[for="silver"]:hover {
     border-color: #A8A8A8;
 }
-.membership-form input[type="radio"]:checked + label[for="silver"]::before {
+#join-page .membership-form input[type="radio"]:checked + label[for="silver"]::before {
+    border-color: silver;
+}
+#join-page .membership-levels-grid input[type="radio"]:checked + label[for="silver"]::after {
     background-color: silver;
-    border-color: #A8A8A8;
 }
+#join-page .membership-levels-grid label[for="silver"] strong {
+    color: silver;
+}
+
 
 /* Specific color for Gold */
-.membership-form label[for="gold"] {
+#join-page .membership-form label[for="gold"] {
     border-color: gold;
 }
-.membership-form label[for="gold"]:hover {
+#join-page .membership-form label[for="gold"]:hover {
     border-color: #DAA520;
 }
-.membership-form input[type="radio"]:checked + label[for="gold"]::before {
+#join-page .membership-form input[type="radio"]:checked + label[for="gold"]::before {
+    border-color: gold;
+}
+#join-page .membership-levels-grid input[type="radio"]:checked + label[for="gold"]::after {
     background-color: gold;
-    border-color: #DAA520;
+}
+#join-page .membership-levels-grid label[for="gold"] strong {
+    color: gold;
 }
 
-/* Adjust general label for radio group to avoid conflict with card labels */
-.membership-form fieldset legend + label {
+
+#join-page button[type="submit"] {
+    display: block; /* Make it a block element to center with margin auto */
+    margin: var(--spacing-xl) auto 0 auto;
+    width: fit-content; /* Only as wide as content */
+}
+
+/* Remove original membership-benefits general styles to avoid conflict */
+#join-page .membership-benefits {
+    display: none;
+}
+#join-page .benefit-item {
     display: none;
 }
 
-.membership-form button[type="submit"] {
-    width: 100%;
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: var(--font-size-lg);
+
+#join-page .membership-benefits-container {
+    grid-column: 2 / 3; /* Place cards in the second column */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    padding-top: var(--spacing-xxl); /* Align with the top of the form for visual balance */
+}
+
+#join-page .membership-benefits-container h3 {
+    font-size: var(--font-size-xxl);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+    text-align: left;
+}
+
+#join-page .membership-card {
+    background-color: var(--light-grey-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Indicate clickability */
+    animation: fadeIn 1s ease-out forwards; /* Animation for initial load */
+    opacity: 0; /* Start invisible for animation */
+}
+
+/* Delay for each card for staggered animation */
+#join-page .membership-card:nth-child(1) { animation-delay: 0.1s; }
+#join-page .membership-card:nth-child(2) { animation-delay: 0.2s; }
+#join-page .membership-card:nth-child(3) { animation-delay: 0.3s; }
+#join-page .membership-card:nth-child(4) { animation-delay: 0.4s; }
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#join-page .membership-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+#join-page .membership-card h3 {
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+#join-page .membership-card p {
+    font-size: var(--font-size-sm);
+    color: var(--light-text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+#join-page .membership-card .price {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+#join-page .membership-card .view-details {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white-bg-color);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#join-page .membership-card .view-details:hover {
+    background-color: var(--primary-dark-color);
+}
+
+/* Membership Card Specific Styles (for the border/look) */
+#join-page .membership-card.bronze-level { border-color: #CD7F32; }
+#join-page .membership-card.bronze-level h3 { color: #CD7F32; }
+
+#join-page .membership-card.silver-level { border-color: silver; }
+#join-page .membership-card.silver-level h3 { color: silver; }
+
+#join-page .membership-card.gold-level { border-color: gold; }
+#join-page .membership-card.gold-level h3 { color: gold; }
+
+#join-page .membership-card.np-level { border-color: var(--info-color); }
+#join-page .membership-card.np-level h3 { color: var(--info-color); }
+
+
+/* Modal Styles */
+#join-page .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    animation: fadeInModal 0.3s ease-out forwards;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#join-page .modal-content {
+    background-color: var(--white-bg-color);
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: var(--spacing-xl);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    width: 50%; /* Could be more or less, depending on screen size */
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative; /* For positioning close button */
+    animation: slideInModal 0.3s ease-out forwards;
+}
+
+@keyframes slideInModal {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#join-page .modal-content h3 {
+    font-size: var(--font-size-xxl);
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+    text-align: left; /* Ensure modal headings are left-aligned */
+}
+
+#join-page .modal-content p {
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+#join-page .modal-content ul {
+    list-style: disc;
+    margin-left: var(--spacing-lg);
+    padding-left: var(--spacing-sm);
+}
+
+#join-page .modal-content ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+#join-page .close {
+    color: var(--secondary-color);
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-lg);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#join-page .close:hover,
+#join-page .close:focus {
+    color: var(--dark-bg-color);
+    text-decoration: none;
+}
+
+/* ========================================= */
+/* 9. Thank You Page Specific Styles (Specific to thankyou.html) */
+/* ========================================= */
+
+.page-title {
+    text-align: center;
+    font-size: var(--font-size-xxxl);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xxl);
     margin-top: var(--spacing-xl);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+.confirmation-details {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xxl) auto;
+    padding: var(--spacing-xxl);
+    background-color: var(--white-bg-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-md);
+    text-align: center;
+    line-height: 1.8;
+}
+
+.confirmation-details p {
+    font-size: var(--font-size-md);
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.confirmation-details p:last-of-type {
+    margin-bottom: 0;
+}
+
+.submitted-info {
+    background-color: var(--light-grey-bg);
+    border: 1px dashed var(--dashed-border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) auto;
+    text-align: left;
+}
+
+.submitted-info h2 {
+    font-size: var(--font-size-xl);
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-xs);
+}
+
+.submitted-info p {
+    font-size: var(--font-size-sm);
+    margin: var(--spacing-xs) 0;
+    color: var(--light-text-color);
+}
+
+.submitted-info p strong {
+    color: var(--text-color);
+}
+
+.return-home-message {
+    margin-top: var(--spacing-xxl);
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.return-home-message a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.return-home-message a:hover {
+    color: var(--primary-dark-color);
+    text-decoration: underline;
 }
