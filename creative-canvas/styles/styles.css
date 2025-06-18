@@ -1,0 +1,156 @@
+/* General Body and Container Styles */
+body {
+    font-family: 'Lora', serif; /* Primary body font set to Lora */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    /* Wooden background using a subtle texture image */
+    background-image: url('https://www.transparenttextures.com/patterns/wood.png'); /* You can replace this with your own local wood texture image */
+    background-color: #f2e8d9; /* A fallback light wooden color - keeping this as it suggests an organic wood texture */
+    color: #000000; /* Black text color */
+}
+
+/* Ensure all common text elements are black unless otherwise specified */
+p, ul, li, a {
+    color: #000000;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFF8DC; /* Secondary Color: Cornsilk */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-family: 'Montserrat', sans-serif; /* Heading font set to Montserrat */
+    color: #8B4513; /* Primary Color: Saddle Brown */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-heading {
+    font-family: 'Montserrat', sans-serif; /* Heading font set to Montserrat */
+    color: #8B4513; /* Primary Color: Saddle Brown */
+    border-bottom: 2px solid #8B4513; /* Border is Primary Color: Saddle Brown */
+    padding-bottom: 5px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+/* Paragraphs and Lists */
+p {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Color Swatches */
+.color-swatch {
+    display: block; /* Changed to block to move it to a new line */
+    width: 50px;   /* Increased width */
+    height: 30px;  /* Increased height */
+    border: 1px solid #ccc;
+    margin-left: 0; /* Remove previous margin-left */
+    margin-top: 5px; /* Add some space above the box */
+    margin-bottom: 10px; /* Add some space below the box */
+    border-radius: 4px;
+}
+
+.primary-color-swatch {
+    background-color: #8B4513; /* Primary Color: Saddle Brown */
+}
+
+.secondary-color-swatch {
+    background-color: #FFF8DC; /* Secondary Color: Cornsilk */
+}
+
+.accent-color-swatch {
+    background-color: #FFD700; /* Accent Color: Gold */
+}
+
+
+/* Wireframe Toggle */
+.wireframe-toggle {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.toggle-button {
+    background-color: #8B4513; /* Button background: Primary Color (Saddle Brown) */
+    color: #FFFFFF; /* White text for the button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.toggle-button:hover {
+    background-color: #A0522D; /* Slightly darker shade of brown on hover */
+}
+
+.arrow {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.wireframe-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    text-align: center;
+}
+
+.wireframe-content.show {
+    max-height: 1000px; /* Adjust as needed to fit content */
+}
+
+.wireframe-container {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9; /* Retains a light background for wireframe container */
+    border-radius: 5px;
+    display: inline-block; /* To center the container */
+}
+
+.wireframe-container img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below image */
+    margin: 0 auto; /* Centers the image */
+}
+
+.wireframe-container a {
+    color: #8B4513; /* Primary Color for the link text in wireframe container */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.wireframe-container a:hover {
+    text-decoration: underline;
+}
+
+/* Specific elements for the site plan content */
+strong {
+    font-weight: bold;
+    color: #8B4513; /* Ensure strong text uses the Primary Color */
+}

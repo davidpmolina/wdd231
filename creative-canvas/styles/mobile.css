@@ -1,0 +1,31 @@
+/* Mobile Styles */
+@media screen and (max-width: 600px) {
+    .container {
+        /* Adjusted margin for mobile view: 10px top/bottom, 15px left/right */
+        margin: 10px 15px;
+        padding: 15px;
+    }
+
+    .main-heading {
+        font-size: 1.8em;
+    }
+
+    .section-heading {
+        font-size: 1.2em;
+        margin-top: 30px;
+    }
+
+    .toggle-button {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1em;
+    }
+
+    .wireframe-container {
+        padding: 5px;
+    }
+
+    .wireframe-container img {
+        width: 100%; /* Ensure images scale down */
+    }
+}
