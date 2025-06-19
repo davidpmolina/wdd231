@@ -67,13 +67,13 @@
 
 .hero-discover h2 {
     font-size: var(--font-size-xxxl); /* Large heading font size */
-    color: var(--text-color); /* Uses theme text color */
+    color: black; /* Uses theme text color */
     margin-bottom: var(--spacing-md); /* Space below heading */
 }
 
 .hero-discover p {
     font-size: var(--font-size-lg); /* Paragraph font size */
-    color: var(--light-text-color); /* Lighter text color from theme */
+    color: black; /* Lighter text color from theme */
     max-width: 700px; /* Limits paragraph width for readability */
     margin: 0 auto; /* Centers the paragraph horizontally */
 }
