@@ -8,52 +8,68 @@
 /* ========================================= */
 
 :root {
-    /* Define a color palette for better maintainability */
-    --primary-color: #007bff; /* Example: Blue for links/buttons */
-    --primary-dark-color: #0056b3;
-    --secondary-color: #6c757d; /* Example: Grey for secondary buttons */
-    --secondary-dark-color: #5a6268;
-    --text-color: #333;
-    --light-text-color: #666;
-    --dark-bg-color: #444;
-    --light-bg-color: #f4f4f4;
-    --white-bg-color: #fff;
-    --light-grey-bg: #eee;
-    --border-color: #ddd;
-    --dashed-border-color: #999;
-    --highlight-border-silver: silver;
-    --highlight-border-gold: gold;
-    --success-color: #28a745; /* New: for selected radio */
-    --info-color: #17a2b8; /* New: for non-profit */
+    /* Base Color Palette */
+    --primary-color: #000000;          /* Original bright blue (for backgrounds, borders, non-text elements) */
+    --primary-dark-color: #0056b3;     /* Darker blue, for hover states or stronger emphasis */
+    --primary-text-accessible: #0056b3;/* NEW: Darker blue for text (this is your original --primary-dark-color) */
 
-    /* Define font sizes (optional, but good for scaling) */
-    --font-size-base: 16px;
-    --font-size-xs: 0.8em; /* Added for mobile adjustments */
-    --font-size-sm: 0.9em;
-    --font-size-md: 1.1em;
-    --font-size-lg: 1.2em;
-    --font-size-xl: 1.5em;
-    --font-size-xxl: 1.8em;
-    --font-size-xxxl: 2.5em;
+    --secondary-color: #6c757d;        /* Muted grey, for secondary buttons */
+    --secondary-dark-color: #5a6268;   /* Darker grey */
+    --secondary-text-accessible: #5a6268; /* NEW: Darker grey for text (using secondary-dark-color) */
 
-    /* Spacing variables (optional) */
-    --spacing-xxs: 2px; /* Added for fine tuning */
-    --spacing-xs: 5px;
-    --spacing-sm: 10px;
-    --spacing-md: 15px;
-    --spacing-lg: 20px;
-    --spacing-xl: 30px;
-    --spacing-xxl: 40px;
-    --spacing-xxxl: 60px;
+    /* Text Colors */
+    --text-color: #333;                /* Standard dark text color, good on light backgrounds */
+    --light-text-color: #666;          /* Lighter grey text, for secondary info; check contrast for small text */
+    --dark-text-accessible: #212529;   /* Very dark grey for high contrast on light backgrounds (WCAG compliant) */
+
+    /* Background Colors */
+    --dark-bg-color: #444;             /* Dark background, potentially for headers/footers */
+    --light-bg-color: #f4f4f4;         /* Light grey background, for sections */
+    --white-bg-color: #fff;            /* Pure white background */
+    --light-grey-bg: #eee;             /* Very light grey background */
+
+    /* Border Colors */
+    --border-color: #ddd;              /* Standard light grey border */
+    --dashed-border-color: #999;       /* Darker dashed border */
+
+    /* Highlight/Accent Borders (for membership levels, etc.) */
+    --highlight-border-silver: silver; /* Example silver color */
+    --highlight-border-gold: gold;     /* Example gold color */
+
+    /* Status/Semantic Colors */
+    --success-color: #28a745;          /* Green for success messages or selected states */
+    --info-color: #17a2b8;             /* Blue/cyan for informational messages */
+
+    /* Font Size Variables (using rem for better scaling) */
+    --font-size-xs: 0.75rem;           /* 12px */
+    --font-size-sm: 0.875rem;          /* 14px */
+    --font-size-base: 1rem;            /* 16px (base for rem units) */
+    --font-size-md: 1.125rem;          /* 18px */
+    --font-size-lg: 1.25rem;           /* 20px */
+    --font-size-xl: 1.5rem;            /* 24px */
+    --font-size-xxl: 2rem;             /* 32px */
+    --font-size-xxxl: 3rem;            /* 48px */
+
+    /* Spacing Variables */
+    --spacing-xxs: 4px;                /* Adjusted for better practical use */
+    --spacing-xs: 8px;                 /* Adjusted */
+    --spacing-sm: 12px;                /* Adjusted */
+    --spacing-md: 16px;                /* Adjusted */
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+    --spacing-xxxl: 64px;
 
     /* Border Radius */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
-    --border-radius-circle: 50%; /* New for radio buttons */
+    --border-radius-lg: 12px; /* Added for consistency, often useful */
+    --border-radius-circle: 50%;
 
-    /* --- NEW VARIABLE --- */
-    --box-shadow-sm: 0 2px 5px rgba(0,0,0,0.08);
-    --box-shadow-md: 0 4px 10px rgba(0,0,0,0.1); /* Defined for use in .membership-form */
+    /* Box Shadow Variables */
+    --box-shadow-sm: 0 1px 2px rgba(0,0,0,0.05); /* Lighter shadow for subtle depth */
+    --box-shadow-md: 0 4px 8px rgba(0,0,0,0.1);  /* Medium shadow for cards/elements */
+    --box-shadow-lg: 0 8px 16px rgba(0,0,0,0.15); /* Stronger shadow for pop-ups/modals */
 }
 
 body {

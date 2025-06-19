@@ -128,7 +128,7 @@
 
 .place-card h2 {
     font-size: var(--font-size-xl);
-    color: var(--primary-color);
+    color: #333333; /* Changed to a dark gray for improved contrast */
     margin-top: 0;
     margin-bottom: var(--spacing-sm);
 }
