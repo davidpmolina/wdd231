@@ -1,0 +1,41 @@
+/*
+    Timbuktu Chamber of Commerce - Medium Screen Styles for Discover Page
+    Applies for screen widths between 641px and 1024px.
+*/
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .discover-content {
+        /* Redefine grid areas for medium screens */
+        grid-template-areas:
+            "welcome-message"
+            "places-of-interest";
+        grid-template-columns: 1fr; /* Single column for content and sidebar */
+        gap: var(--spacing-xl); /* Increase gap slightly */
+    }
+
+    .welcome-message {
+        margin-bottom: var(--spacing-lg); /* Add space below message when it's at the top */
+    }
+
+    .places-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Two columns for cards */
+        gap: var(--spacing-lg); /* Slightly less gap for cards */
+    }
+
+    .place-card {
+        padding: var(--spacing-md);
+    }
+
+    .place-card h2 {
+        font-size: var(--font-size-lg);
+    }
+
+    .place-card img {
+        height: 180px; /* Slightly smaller image height for medium screens */
+    }
+
+    .place-card address,
+    .place-card p {
+        font-size: var(--font-size-sm);
+    }
+}

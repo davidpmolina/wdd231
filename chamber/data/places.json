@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Djinguereber Mosque",
+        "image": "images/mosque.webp",
+        "alt": "Historic Djinguereber Mosque",
+        "address": "Timbuktu, Mali",
+        "description": "An ancient learning center and a prominent landmark, built in 1327, famous for its unique Sudano-Sahelian architecture. A UNESCO World Heritage site."
+    },
+    {
+        "name": "Sankore Mosque University",
+        "image": "images/sankore-university.webp",
+        "alt": "Sankore Mosque University entrance",
+        "address": "Timbuktu, Mali",
+        "description": "One of the three ancient centers of learning in Timbuktu, it served as a spiritual and intellectual hub for centuries, housing vast libraries and scholarly texts."
+    },
+    {
+        "name": "Ahmed Baba Institute",
+        "image": "images/ahmed-baba-institute.webp",
+        "alt": "Ahmed Baba Institute building",
+        "address": "Rue Askia Mohammed, Timbuktu, Mali",
+        "description": "Dedicated to preserving ancient manuscripts of Timbuktu, this institute is a vital cultural repository showcasing the city's rich intellectual heritage."
+    },
+    {
+        "name": "Timbuktu Grand Market",
+        "image": "images/market.webp",
+        "alt": "Vibrant Timbuktu Grand Market scene",
+        "address": "City Center, Timbuktu, Mali",
+        "description": "A bustling hub of commerce where locals trade goods, spices, crafts, and traditional items. Offers a lively insight into daily life."
+    },
+    {
+        "name": "House of Explorer René Caillié",
+        "image": "images/rene-caille-house.webp",
+        "alt": "Historic house of René Caillié",
+        "address": "Timbuktu, Mali",
+        "description": "The modest house where the French explorer René Caillié stayed during his famous visit to Timbuktu in the 19th century, becoming the first European to return alive."
+    },
+    {
+        "name": "Sahara Desert Gateway",
+        "image": "images/sahara-gateway.webp",
+        "alt": "Sand dunes at the edge of Timbuktu",
+        "address": "Outskirts of Timbuktu, Mali",
+        "description": "Timbuktu serves as a historic gateway to the vast Sahara Desert, marking the intersection of ancient trade routes and providing breathtaking desert landscapes."
+    },
+    {
+        "name": "Local Artisan Workshops",
+        "image": "images/artisans.webp",
+        "alt": "Local artisan crafting traditional goods",
+        "address": "Various locations, Timbuktu, Mali",
+        "description": "Visit traditional workshops where local artisans create leather goods, intricate jewelry, and textiles using centuries-old techniques."
+    },
+    {
+        "name": "Timbuktu Public Library",
+        "image": "images/library.webp",
+        "alt": "Interior of a traditional Timbuktu library",
+        "address": "Timbuktu, Mali",
+        "description": "Beyond the ancient manuscripts, this library provides modern resources and serves as a community hub for education and literacy."
+    }
+]

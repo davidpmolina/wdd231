@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timbuktu Chamber of Commerce - Business Directory</title>
-    <meta name="description" content="Explore the comprehensive business directory of the Timbuktu Chamber of Commerce. Find local businesses and organizations.">
+    <title>Discover Timbuktu - Chamber of Commerce</title>
+    <meta name="description" content="Discover the rich history, culture, and attractions of Timbuktu. Explore local points of interest, demographics, and what makes our city unique.">
     <meta name="author" content="Timbuktu Chamber of Commerce">
 
-    <meta property="og:title" content="Timbuktu Chamber of Commerce - Business Directory">
-    <meta property="og:description" content="Browse and connect with businesses in Timbuktu through the official Chamber of Commerce directory.">
-    <meta property="og:image" content="https://davidpmolina.github.io/wdd231/chamber/images/hero.jpg">
-    <meta property="og:url" content="https://davidpmolina.github.io/wdd231/chamber/directory.html">
+    <meta property="og:title" content="Discover Timbuktu - Chamber of Commerce">
+    <meta property="og:description" content="Explore Timbuktu's attractions, history, and community highlights on the Chamber of Commerce website.">
+    <meta property="og:image" content="https://davidpmolina.github.io/wdd231/chamber/images/discover-hero.jpg">
+    <meta property="og:url" content="https://davidpmolina.github.io/wdd231/chamber/discover.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Timbuktu Chamber of Commerce">
 
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles/desktop.css">
     <link rel="stylesheet" href="styles/mobile.css" media="(max-width: 768px)">
-
+    <link rel="stylesheet" href="styles/medium.css" media="(min-width: 641px) and (max-width: 1024px)">
+    <link rel="stylesheet" href="styles/discover.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -43,35 +44,33 @@
             <nav id="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="directory.html" class="active">Directory</a></li>
+                    <li><a href="directory.html">Directory</a></li>
                     <li><a href="join.html">Join</a></li>
-                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="discover.html" class="active">Discover</a></li>
                     <li><a href="#" class="search-icon">🔍</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <h1>Timbuktu Chamber of Commerce - Business Directory</h1>
-
-        <section id="business-directory" class="content-section">
+    <main id="discover-page">
+        <h1 class="visually-hidden">Discover Timbuktu</h1>
+        <section class="hero-discover">
             <div class="container">
-                <h2>Our Valued Members</h2>
-
-                <div class="directory-intro">
-                    <p>Welcome to the Timbuktu Chamber of Commerce Member Directory. Here you can find a comprehensive list of our local businesses and organizations. Use the buttons below to switch between Grid and List views.</p>
-                </div>
-
-                <div class="menu-toggle-buttons">
-                    <button id="grid-view" class="active">Grid View</button>
-                    <button id="list-view">List View</button>
-                </div>
-
-                <div id="members-display" class="grid-view-active">
-                    <p>Loading member data...</p>
-                </div>
+                <h2>Explore the Wonders of Timbuktu</h2>
+                <p>Delve into the rich history and vibrant culture of our city. Timbuktu offers a unique blend of ancient traditions and modern aspirations, making it a truly remarkable place to live, work, and visit.</p>
             </div>
+        </section>
+
+        <div id="welcome-overlay" class="welcome-overlay">
+            <div id="welcome-message" class="welcome-message-content">
+                <p>Loading message...</p>
+            </div>
+        </div>
+
+        <section class="discover-content container">
+            <div id="places-of-interest" class="places-grid">
+                </div>
         </section>
     </main>
 
@@ -98,5 +97,6 @@
         </div>
     </footer>
     <script src="scripts/scripts.js"></script>
+    <script src="scripts/discover.js"></script>
 </body>
 </html>

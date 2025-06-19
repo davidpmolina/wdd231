@@ -1,64 +1,37 @@
 /*
     Timbuktu Chamber of Commerce - Mobile Styles
     Applies for screen widths up to 768px.
+    This stylesheet overrides and adjusts styles from desktop.css for mobile devices.
 */
 
 /* ========================================= */
-/* 1. Root & Base Styles         */
-/* (Inherits from Desktop where not overridden) */
+/* 1. Root & Base Overrides                  */
 /* ========================================= */
 
+/* IMPORTANT: Ensure box-sizing is globally set in a base/desktop CSS file.
+   If not, uncomment and place this at the very top of mobile.css: */
+/*
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+*/
+
+/* Prevent horizontal scroll for the entire page if not already handled globally */
+html, body {
+    overflow-x: hidden;
+}
+
 body {
+    /* Only override if different from desktop's var(--font-size-base); otherwise, it's redundant */
     font-size: var(--font-size-base);
 }
 
 .container {
+    /* Mobile-specific padding for containers */
     padding: var(--spacing-md);
 }
 
-/* ========================================= */
-/* 2. Header             */
-/* ========================================= */
-
-#site-header {
-    flex-wrap: wrap;
-    padding: var(--spacing-sm) var(--spacing-md);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.header-content {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.logo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--spacing-xs);
-}
-
-.logo img {
-    width: 40px;
-}
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.logo h1 {
-    font-size: var(--font-size-xxl);
-    margin: 0;
-}
-
-.logo p {
-    font-size: 0.7em;
-    margin: 0;
-}
-
+/* Visually hidden for accessibility - usually a global utility class */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -70,35 +43,72 @@ body {
     border: 0;
 }
 
+
+/* ========================================= */
+/* 2. Header & Navigation Overrides          */
+/* ========================================= */
+
+#site-header {
+    /* Allows header items to wrap on smaller screens */
+    flex-wrap: wrap;
+    /* Adjust padding for mobile */
+    padding: var(--spacing-sm) var(--spacing-md);
+    /* Box shadow might already be on desktop; override if different */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    /* Distribute logo and hamburger menu */
+    justify-content: space-between;
+    width: 100%; /* Ensures header content takes full width */
+}
+
+/* Logo specific adjustments for mobile */
+.logo {
+    /* Ensure flex display and alignment as needed for mobile */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.logo img {
+    /* Adjust logo size for mobile */
+    width: 40px;
+}
+
+.logo-text {
+    /* Adjust logo text stacking/alignment for mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* Overrides for site title within logo (adjust size for mobile) */
 .header-content .logo-text .site-title-text {
-    font-size: 2em;
+    font-size: 2em; /* Smaller relative to desktop, adjust as needed */
     font-weight: bold;
     color: #333;
     margin-bottom: 0;
 }
+/* Removed redundant .logo h1 and .logo p if .logo-text overrides them */
 
-main h1 {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 1em;
-}
 
 /* --- Mobile Menu Toggle (Hamburger Icon) --- */
 .menu-toggle {
-    display: none;
+    display: none; /* Hidden by default, toggled by JS/CSS for visibility */
 }
 
 .hamburger-menu {
-    display: flex;
+    display: flex; /* Makes the hamburger visible */
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 20px;
     cursor: pointer;
-    z-index: 100;
-    padding: var(--spacing-xs);
+    z-index: 100; /* Ensures it's clickable above other elements */
+    padding: var(--spacing-xs); /* Added padding for easier tapping */
 }
 
 .hamburger-menu .bar {
@@ -106,7 +116,7 @@ main h1 {
     height: 3px;
     background-color: var(--text-color);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Smooth transition for animation */
 }
 
 /* Hamburger Menu Animation (to X) */
@@ -122,273 +132,279 @@ main h1 {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+
 /* --- Mobile Navigation Visibility and Styling --- */
 #main-nav {
-    width: 100%;
-    order: 2;
-    position: absolute;
-    top: 100%;
+    width: 100%; /* Full width dropdown */
+    order: 2; /* Forces it below logo/hamburger in flex layout */
+    position: absolute; /* Positions relative to parent (header) */
+    top: 100%; /* Places it directly below the header */
     left: 0;
-    background-color: var(--white-bg-color);
-    border-top: 1px solid var(--border-color);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    z-index: 999;
+    background-color: var(--white-bg-color); /* Matches theme background */
+    border-top: 1px solid var(--border-color); /* Separator */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    z-index: 999; /* Below overlay, but above other content */
 
+    /* Hide by default, revealed on toggle */
     max-height: 0;
     opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    overflow: hidden; /* Hides content when collapsed */
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Smooth slide/fade */
 }
 
 #menu-toggle:checked ~ #main-nav {
-    max-height: 300px;
-    opacity: 1;
+    max-height: 300px; /* Expands to show content */
+    opacity: 1; /* Fully visible */
 }
 
 #main-nav ul {
-    flex-direction: column;
-    list-style: none;
+    flex-direction: column; /* Stack menu items vertically */
+    list-style: none; /* Remove bullet points */
     margin: 0;
     padding: 0;
 }
 
 #main-nav ul li {
     width: 100%;
-    text-align: center;
+    text-align: center; /* Center menu item text */
 }
 
 #main-nav ul li a {
-    padding: var(--spacing-md) 0;
-    display: block;
-    border-bottom: 1px solid var(--light-grey-bg);
+    padding: var(--spacing-md) 0; /* Vertical padding for tap area */
+    display: block; /* Makes the entire area clickable */
+    border-bottom: 1px solid var(--light-grey-bg); /* Separator between links */
     color: var(--text-color);
     text-decoration: none;
-    font-weight: normal;
+    font-weight: normal; /* Override any bold from desktop */
     transition: background-color 0.2s ease;
 }
 
 #main-nav ul li a:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Hover effect */
 }
 
 #main-nav ul li:last-child a {
-    border-bottom: none;
+    border-bottom: none; /* No border on the last item */
 }
 
 .search-icon {
-    display: none;
+    display: none; /* Hide search icon on mobile if only for desktop nav */
 }
 
+
 /* ========================================= */
-/* 3. Home Section             */
+/* 3. Home Section Overrides                 */
 /* ========================================= */
 
 .hero-section {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-lg) 0; /* Adjust padding for mobile hero */
 }
 
 .hero-image-placeholder {
-    height: 180px;
+    height: 180px; /* Adjust height for mobile hero image */
     margin-bottom: var(--spacing-sm);
 }
 
 .hero-section .btn.keynote-btn {
-    position: static;
-    margin: var(--spacing-sm) auto 0 auto;
+    position: static; /* Override absolute positioning if any from desktop */
+    margin: var(--spacing-sm) auto 0 auto; /* Center button */
     display: block;
-    width: fit-content;
+    width: fit-content; /* Button takes only content width */
 }
 
 /* --- Main Home Content Section --- */
 .home-main-content h2 {
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-xxl); /* Adjust heading size */
     text-align: center;
-    border-bottom: none;
+    border-bottom: none; /* Remove border if present on desktop */
     padding-bottom: 0;
     margin-bottom: var(--spacing-md);
 }
 
 .home-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack main home sections vertically */
     gap: var(--spacing-md);
 }
 
 .events-section,
 .weather-section,
 .weather-forecast-section {
-    padding: var(--spacing-md);
+    padding: var(--spacing-md); /* Adjust padding for these sections */
 }
 
 .events-section h3,
 .weather-section h3,
 .weather-forecast-section h3 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xl); /* Adjust heading sizes */
 }
 
 .weather-current .temp {
-    font-size: 2em;
+    font-size: 2em; /* Adjust temperature font size */
 }
 
 .weather-current img {
-    width: 50px;
+    width: 50px; /* Adjust weather icon size */
 }
 
 .business-preview-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack business cards vertically */
     gap: var(--spacing-md);
     margin-top: var(--spacing-xl);
 }
 
 .business-card-preview {
-    padding: var(--spacing-md);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    padding: var(--spacing-md); /* Adjust padding */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Adjust shadow if different from desktop */
 }
 
 .business-image-placeholder {
-    width: 80px;
+    width: 80px; /* Adjust image size in business cards */
     height: 80px;
 }
 
+
 /* ========================================= */
-/* 4. General Content Sections      */
+/* 4. General Content Sections Overrides     */
+/* (Applicable to pages like About, Join, etc.) */
 /* ========================================= */
 
 .content-section {
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xxl) 0; /* Adjust overall section padding */
 }
 
 .content-section h2 {
-    font-size: var(--font-size-xxxl);
+    font-size: var(--font-size-xxxl); /* Adjust heading size */
     margin-bottom: var(--spacing-xl);
 }
 
 .membership-benefits {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack benefits vertically */
 }
 
 .benefit-item {
-    padding: var(--spacing-md);
+    padding: var(--spacing-md); /* Adjust padding */
     text-align: left;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Adjust shadow */
 }
 
 .benefit-item h3 {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-lg); /* Adjust heading size */
 }
 
+
 /* ========================================= */
-/* 5. Member Directory           */
+/* 5. Member Directory Overrides             */
 /* ========================================= */
 
 .directory-intro {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-md); /* Adjust font size */
     margin-bottom: var(--spacing-lg);
 }
 
 .menu-toggle-buttons {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-md); /* Adjust spacing */
 }
 
 .menu-toggle-buttons button {
-    padding: 6px 12px;
-    font-size: var(--font-size-sm);
+    padding: 6px 12px; /* Adjust button padding */
+    font-size: var(--font-size-sm); /* Adjust button font size */
 }
 
 /* Mobile: Grid View (Default - stacked) */
 #members-display.grid-view-active {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Force single column for cards */
     gap: var(--spacing-md);
-    padding: var(--spacing-xs);
-    box-shadow: none;
-    background-color: transparent;
+    padding: var(--spacing-xs); /* Adjust padding */
+    box-shadow: none; /* Remove container shadow */
+    background-color: transparent; /* Transparent background for container */
 }
 
 #members-display.grid-view-active .member-card {
-    padding: var(--spacing-md);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    padding: var(--spacing-md); /* Adjust card padding */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Apply shadow to individual cards */
 }
 
 #members-display.grid-view-active .member-card img {
-    max-width: 80px;
+    max-width: 80px; /* Adjust image size */
     margin-bottom: var(--spacing-sm);
 }
 
 #members-display.grid-view-active .member-card h3 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xl); /* Adjust heading size */
 }
 
 #members-display.grid-view-active .member-card p {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-sm); /* Adjust paragraph font size */
 }
 
 /* Mobile: List View */
 #members-display.list-view-active {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: flex; /* Use flex for list layout */
+    flex-direction: column; /* Stack items vertically */
+    gap: 0; /* No gap between list items */
     padding: 0;
 }
 
 #members-display.list-view-active .member-card {
     background-color: var(--white-bg-color);
-    display: grid;
-    grid-template-columns: 80px 1fr;
+    display: grid; /* Use grid for internal card layout in list view */
+    grid-template-columns: 80px 1fr; /* Image column and content column */
     gap: var(--spacing-md);
-    align-items: center;
+    align-items: center; /* Vertically align items */
 
     padding: var(--spacing-sm) var(--spacing-md);
     border-bottom: 1px solid var(--light-grey-bg);
-    box-shadow: none;
+    box-shadow: none; /* Remove individual card shadow in list view */
     border-radius: 0;
     transition: background-color 0.2s ease;
     text-align: left;
 }
 
 #members-display.list-view-active .member-card:first-child {
-    border-top: 1px solid var(--light-grey-bg);
+    border-top: 1px solid var(--light-grey-bg); /* Top border for the first item */
 }
 
 #members-display.list-view-active .member-card img {
-    width: 60px;
+    width: 60px; /* Adjust image size */
     height: 60px;
     object-fit: cover;
-    border-radius: 50%;
-    grid-column: 1 / 2;
-    grid-row: 1 / span 3;
+    border-radius: 50%; /* Make image round */
+    grid-column: 1 / 2; /* Position in first column */
+    grid-row: 1 / span 3; /* Span multiple rows */
     margin-right: 0;
     margin-bottom: 0;
 }
 
 #members-display.list-view-active .member-card .member-header-info {
-    grid-column: 2 / 3;
+    grid-column: 2 / 3; /* Position in second column */
     grid-row: 1 / 2;
     text-align: left;
     margin-bottom: 0;
 }
 
 #members-display.list-view-active .member-card h3 {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-md); /* Adjust heading size */
     margin: 0;
 }
 
 #members-display.list-view-active .member-card .member-slogan {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xs); /* Adjust font size */
     font-style: italic;
     color: var(--light-text-color);
     margin: 0;
 }
 
 #members-display.list-view-active .member-card .member-contact-details {
-    grid-column: 2 / 3;
+    grid-column: 2 / 3; /* Position in second column */
     grid-row: 2 / 4;
     text-align: left;
     margin-top: var(--spacing-xs);
 }
 
 #members-display.list-view-active .member-card .member-contact-details p {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xs); /* Adjust font size */
     margin: var(--spacing-xxs) 0;
-    word-break: break-all;
+    word-break: break-all; /* Ensures long words break to prevent overflow */
     white-space: normal;
 }
 
@@ -398,121 +414,120 @@ main h1 {
 }
 
 #members-display.list-view-active .member-card p {
-    font-size: 0.85em;
+    font-size: 0.85em; /* Adjust font size */
     margin-bottom: 2px;
-    white-space: normal;
-    overflow: visible;
+    white-space: normal; /* Ensure text wraps */
+    overflow: visible; /* Prevent overflow issues */
     text-overflow: clip;
 }
 
 #members-display.list-view-active .member-card a {
-    font-size: 0.85em;
+    font-size: 0.85em; /* Adjust link font size */
 }
 
 /* Membership level specific styles (mobile adjustments) */
-.silver-member.grid-view-active {
-    box-shadow: none;
-}
+/* These rules are effective overrides for list/grid views */
+.silver-member.grid-view-active,
 .gold-member.grid-view-active {
-    box-shadow: none;
+    box-shadow: none; /* Remove shadows if applied via these classes on desktop */
 }
-/* For list view, keep side border consistent with desktop variables */
 .silver-member.list-view-active {
-    border-left: 5px solid var(--highlight-border-silver);
+    border-left: 5px solid var(--highlight-border-silver); /* Apply left border for list view */
 }
 .gold-member.list-view-active {
-    border-left: 5px solid var(--highlight-border-gold);
+    border-left: 5px solid var(--highlight-border-gold); /* Apply left border for list view */
 }
 
 
 /* ========================================= */
-/* 6. Footer             */
+/* 6. Footer Overrides                       */
 /* ========================================= */
 
 #site-footer {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-lg) 0; /* Adjust footer padding */
 }
 
 .footer-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack footer columns vertically */
     gap: var(--spacing-lg);
-    text-align: center;
+    text-align: center; /* Center footer text */
     padding-bottom: var(--spacing-md);
-    border-bottom: 1px solid #777;
+    border-bottom: 1px solid #777; /* Adjust border color/style */
 }
 
 .footer-social {
-    justify-content: center;
+    justify-content: center; /* Center social icons */
     margin-top: var(--spacing-sm);
 }
 
 .footer-meta {
-    margin-top: var(--spacing-md);
+    margin-top: var(--spacing-md); /* Adjust spacing */
 }
 
 .copyright {
     padding-top: var(--spacing-md);
-    font-size: 0.75em;
+    font-size: 0.75em; /* Adjust font size */
 }
 
-/* Adjustments for buttons on mobile */
+/* Adjustments for buttons on mobile (global or specific) */
 .btn.secondary-btn {
-    margin-left: 0;
+    margin-left: 0; /* Remove left margin if applied on desktop */
     margin-top: var(--spacing-sm);
 }
 
 /* If you had hero CTAs that stack, this would be relevant */
 .hero-ctas {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack CTAs vertically */
     gap: var(--spacing-sm);
-    align-items: center;
+    align-items: center; /* Center stacked CTAs */
 }
 
+
 /* ========================================= */
-/* 7. Join Page Form Styles (Mobile)       */
+/* 7. Join Page Form Styles Overrides        */
 /* ========================================= */
 
 .membership-form {
-    padding: var(--spacing-md);
-    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-md); /* Adjust padding */
+    margin: var(--spacing-lg) auto; /* Center form horizontally */
 }
 
 .membership-form h3 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xl); /* Adjust heading size */
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-xs);
 }
 
 .membership-form fieldset {
-    padding: var(--spacing-md);
+    padding: var(--spacing-md); /* Adjust fieldset padding */
     margin-bottom: var(--spacing-lg);
 }
 
 .membership-form legend {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-md); /* Adjust legend font size */
 }
 
 .membership-form label {
     margin-top: var(--spacing-sm);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-sm); /* Adjust label font size */
 }
 
 .membership-form input[type="text"],
 .membership-form input[type="email"],
 .membership-form input[type="tel"],
 .membership-form textarea {
-    padding: var(--spacing-xs);
-    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs); /* Adjust input padding */
+    font-size: var(--font-size-sm); /* Adjust input font size */
 }
 
 .membership-form textarea {
-    min-height: 80px;
+    min-height: 80px; /* Adjust min height for text area */
 }
 
 /* Radio Button Membership Levels as Cards (Mobile adjustments) */
 .membership-form .membership-levels-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack membership level cards vertically */
     gap: var(--spacing-md);
 }
 
@@ -551,7 +566,7 @@ main h1 {
 }
 
 .membership-form button[type="submit"] {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) var(--spacing-lg); /* Adjust button padding */
+    font-size: var(--font-size-base); /* Adjust button font size */
     margin-top: var(--spacing-lg);
 }
